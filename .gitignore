@@ -1,0 +1,8 @@
+# Confidential client data — never commit these
+*.xlsx
+*.vtt
+*.txt
+*.pdf
+
+# macOS
+.DS_Store

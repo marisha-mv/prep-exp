@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prep Expert — Webinar Funnel Audit Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f4f1ea;   /* paper */
+    --bg-2:      #ebe5d6;   /* warm paper (alt sections) */
+    --card:      #ffffff;
+    --card-2:    #ebe5d6;
+    --border:    rgba(10,10,10,0.12);   /* hairline */
+    --text:      #0a0a0a;   /* ink */
+    --muted:     #6b6658;
+    --gold:      #c8321a;   /* editorial red — primary accent */
+    --gold-2:    #d49418;   /* amber companion */
+    --crisis:    #c8321a;
+    --good:      #2e7d4f;
+    --accent:    #1a3a5c;   /* deep blue */
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:'Inter Tight','Inter',system-ui,sans-serif;
+    font-feature-settings:"ss01","cv11";
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* Grain overlay for editorial paper feel */
+  body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/><feColorMatrix values='0 0 0 0 0.04 0 0 0 0 0.04 0 0 0 0 0.04 0 0 0 0.35 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+    opacity:0.35;
+    pointer-events:none;
+    z-index:9999;
+    mix-blend-mode:multiply;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;letter-spacing:-0.02em;line-height:1.02;margin:0 0 .6em;font-weight:500}
+  h1{font-size:clamp(3rem,8vw,7rem);font-weight:400;letter-spacing:-0.04em;line-height:.92}
+  h1 em{font-style:italic;font-weight:300;color:var(--gold)}
+  h2{font-size:clamp(2.4rem,5vw,4rem);color:var(--text);font-weight:500}
+  h2 em{font-style:italic;font-weight:400;color:var(--gold)}
+  h3{font-size:1.4rem;color:var(--text);font-family:'Inter Tight',sans-serif;font-weight:700;letter-spacing:-0.01em;text-transform:uppercase}
+  p{margin:0 0 1em;color:var(--text);font-size:1.0625rem}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid currentColor}
+  a:hover{color:var(--gold-2)}
+
+  .container{max-width:1180px;margin:0 auto;padding:0 1.5rem}
+
+  /* ── HERO ───────────────────────────────── */
+  .hero{
+    padding:8rem 0 6rem;
+    background:
+      radial-gradient(circle at 15% 85%, rgba(200,50,26,0.08), transparent 40%),
+      radial-gradient(circle at 85% 15%, rgba(26,58,92,0.06), transparent 40%),
+      var(--bg);
+    text-align:center;
+    border-bottom:1px solid var(--text);
+  }
+  .hero .eyebrow{font-family:'JetBrains Mono',monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.3em;font-size:.7rem;margin-bottom:1.5rem;font-weight:500}
+  .hero h1{color:var(--text);font-style:normal}
+  .hero .opp-number{
+    font-family:'Fraunces',serif;
+    font-weight:300;
+    font-style:italic;
+    font-size:clamp(5rem,16vw,12rem);
+    color:var(--gold);
+    line-height:.88;
+    letter-spacing:-0.04em;
+    margin:1rem 0;
+  }
+  .hero .sub{font-family:'Fraunces',serif;font-size:clamp(1.15rem,1.6vw,1.4rem);color:var(--text);max-width:720px;margin:0 auto 2rem;font-style:italic;font-weight:400}
+  .hero .crises-line{font-size:1rem;color:var(--text);max-width:780px;margin:0 auto;padding:1.2rem 1.4rem;border:1px solid var(--text);background:var(--card);border-radius:0}
+  .hero .crises-line strong{color:var(--gold);font-weight:600}
+  .hero .prepared{margin-top:3rem;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase}
+
+  /* ── NAV ────────────────────────────────── */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(244,241,234,0.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    padding:1rem 0;
+  }
+  nav ul{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;list-style:none;margin:0;padding:0;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase}
+  nav a{color:var(--muted);border-bottom:none}
+  nav a:hover{color:var(--gold)}
+
+  /* ── SECTIONS ───────────────────────────── */
+  section{padding:5rem 0;border-bottom:1px solid var(--border)}
+  section.alt{background:var(--bg-2)}
+  .section-eyebrow{color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:1rem;font-weight:500}
+  .lede{font-family:'Fraunces',serif;font-size:clamp(1.25rem,1.8vw,1.6rem);color:var(--text);max-width:820px;margin-bottom:2rem;line-height:1.35;font-weight:400}
+
+  /* ── METRIC TABLE ───────────────────────── */
+  .metric-table{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--card);
+    border:1px solid var(--text);
+    border-radius:0;
+    overflow:hidden;
+    margin:2rem 0;
+  }
+  .metric-table th,.metric-table td{
+    padding:1rem 1.2rem;
+    text-align:left;
+    border-bottom:1px solid var(--border);
+    font-size:.95rem;
+  }
+  .metric-table th{
+    background:var(--card-2);
+    color:var(--text);
+    font-family:'JetBrains Mono',monospace;
+    text-transform:uppercase;
+    letter-spacing:.15em;
+    font-size:.65rem;
+    font-weight:500;
+    border-bottom:1px solid var(--text);
+  }
+  .metric-table tr:last-child td{border-bottom:none}
+  .metric-table .crisis{color:var(--crisis);font-weight:600;font-style:italic}
+  .metric-table .good{color:var(--good);font-weight:600}
+  .metric-table .right{text-align:right;font-variant-numeric:tabular-nums;font-family:'JetBrains Mono',monospace;font-size:.9rem}
+
+  /* ── CRISIS CARDS ───────────────────────── */
+  .crisis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem;margin:2rem 0}
+  .crisis-card{
+    background:var(--card);
+    border:1px solid var(--text);
+    border-left:4px solid var(--crisis);
+    padding:2rem;
+    border-radius:0;
+  }
+  .crisis-card h3{color:var(--crisis);font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:2rem;text-transform:none;letter-spacing:-0.02em;margin-bottom:.4rem}
+  .crisis-card .crisis-tag{display:inline-block;background:var(--crisis);color:#fff;font-family:'JetBrains Mono',monospace;padding:.35rem .7rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem;border-radius:0;font-weight:500}
+  .crisis-card .symptom{font-size:.9rem;color:var(--muted);margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)}
+  .crisis-card .symptom strong{color:var(--text)}
+
+  /* ── ROI TABLE ──────────────────────────── */
+  .roi-block{
+    background:var(--card);
+    border:1px solid var(--text);
+    border-radius:0;
+    padding:1.5rem;
+    margin:1.5rem 0;
+  }
+  .roi-row{
+    display:flex;
+    justify-content:space-between;
+    padding:.7rem 0;
+    border-bottom:1px solid var(--border);
+    font-size:.95rem;
+  }
+  .roi-row:last-child{border:none;padding-top:1rem;border-top:1px solid var(--text);margin-top:.5rem;font-weight:600}
+  .roi-row .label{color:var(--muted)}
+  .roi-row .value{font-variant-numeric:tabular-nums;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:.9rem}
+  .roi-row.highlight .value{color:var(--gold);font-size:1.4rem;font-family:'Fraunces',serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+
+  /* ── REC CARDS ──────────────────────────── */
+  .rec{
+    background:var(--card);
+    border:1px solid var(--text);
+    border-radius:0;
+    padding:2rem;
+    margin:1.6rem 0;
+    position:relative;
+  }
+  .rec .num{
+    position:absolute;top:-14px;left:24px;
+    background:var(--text);
+    color:var(--bg);
+    font-family:'JetBrains Mono',monospace;
+    font-weight:500;
+    font-size:.7rem;
+    padding:.4rem .9rem;
+    border-radius:0;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+  }
+  .rec h3{color:var(--text);font-family:'Fraunces',serif;font-weight:500;font-size:1.7rem;text-transform:none;letter-spacing:-0.02em;margin:.5rem 0 .8rem}
+  .rec h3 em{font-style:italic;font-weight:400;color:var(--gold)}
+  .rec .impact{
+    display:inline-block;
+    margin-top:1rem;
+    background:var(--text);
+    color:var(--bg);
+    padding:.6rem 1.1rem;
+    text-transform:uppercase;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.7rem;
+    font-weight:500;
+    letter-spacing:.2em;
+    border-radius:0;
+  }
+  .rec ul.checks{padding-left:0;list-style:none}
+  .rec ul.checks li{padding:.4rem 0 .4rem 1.6rem;position:relative;color:var(--text);font-size:.95rem}
+  .rec ul.checks li::before{content:'→';color:var(--gold);position:absolute;left:0;font-weight:600}
+  .code{
+    background:#1a1a1a;
+    border:1px solid var(--text);
+    color:#f4f1ea;
+    font-family:'JetBrains Mono',monospace;
+    padding:1rem 1.2rem;
+    margin:1rem 0;
+    font-size:.85rem;
+    white-space:pre-wrap;
+    border-radius:0;
+    border-left:3px solid var(--gold);
+  }
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0}
+  @media(max-width:640px){.ba{grid-template-columns:1fr}}
+  .ba > div{padding:1rem 1.2rem;border-radius:0;font-size:.92rem}
+  .ba .before{background:#f5d5cd;border:1px solid var(--crisis)}
+  .ba .after{background:#cfe3d5;border:1px solid var(--good)}
+  .ba .tag{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.2em;margin-bottom:.4rem;text-transform:uppercase;font-weight:500}
+  .ba .before .tag{color:var(--crisis)}
+  .ba .after .tag{color:var(--good)}
+
+  /* ── BENCHMARK GRID ─────────────────────── */
+  .bench-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0}
+  .bench-card{
+    background:var(--card);
+    border:1px solid var(--text);
+    border-radius:0;
+    padding:1.5rem;
+    text-align:center;
+  }
+  .bench-card .label{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);margin-bottom:.6rem;font-weight:500}
+  .bench-card .pe{font-family:'Fraunces',serif;font-weight:400;font-size:2.6rem;color:var(--text);margin:0;line-height:1;letter-spacing:-0.03em}
+  .bench-card .pe.crisis{color:var(--crisis);font-style:italic}
+  .bench-card .pe.good{color:var(--good)}
+  .bench-card .vs{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);margin-top:.6rem;letter-spacing:.1em}
+
+  /* ── REVENUE IMPACT ─────────────────────── */
+  .impact-section{
+    background:var(--text);
+    color:var(--bg);
+    border:1px solid var(--text);
+    padding:3rem 2rem;
+    margin:2rem 0;
+    border-radius:0;
+  }
+  .impact-section h2,.impact-section .section-eyebrow,.impact-section p{color:var(--bg)}
+  .impact-section h2 em{color:var(--gold-2)}
+  .impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:2rem}
+  .impact-cell{text-align:center;padding:1.5rem;border:1px solid rgba(244,241,234,0.25);background:rgba(244,241,234,0.04);border-radius:0}
+  .impact-cell .lab{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:rgba(244,241,234,0.6);font-weight:500}
+  .impact-cell .val{font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:2.6rem;color:var(--gold-2);margin-top:.4rem;line-height:1;letter-spacing:-0.03em}
+  .impact-cell.highlight{border-color:var(--gold-2);background:rgba(212,148,24,0.1)}
+  .impact-cell.highlight .val{font-size:3.2rem}
+
+  /* ── ROADMAP ────────────────────────────── */
+  .phase{
+    background:var(--card);
+    border:1px solid var(--text);
+    border-left:4px solid var(--gold);
+    padding:1.8rem 2rem;
+    margin:1rem 0;
+    border-radius:0;
+  }
+  .phase .ph-tag{font-family:'JetBrains Mono',monospace;color:var(--gold);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500}
+  .phase h3{margin:.4rem 0 1rem;font-family:'Fraunces',serif;font-weight:500;font-size:1.5rem;text-transform:none;letter-spacing:-0.02em}
+  .phase ul{padding-left:1.2rem;color:var(--text)}
+  .phase ul li{padding:.3rem 0;font-size:.95rem}
+
+  /* ── FOOTER ─────────────────────────────── */
+  footer{
+    background:var(--text);
+    color:var(--bg);
+    text-align:center;
+    padding:5rem 0;
+    border-top:1px solid var(--text);
+  }
+  footer h2{font-size:clamp(2.5rem,5vw,4.5rem);color:var(--bg);font-family:'Fraunces',serif;font-weight:400;letter-spacing:-0.03em}
+  footer h2 em{font-style:italic;font-weight:300;color:var(--gold-2)}
+  footer .gold{color:var(--gold-2);font-style:italic}
+  footer p{font-family:'Fraunces',serif;font-size:1.2rem;color:#e8e1d0;max-width:780px;margin:1rem auto;font-weight:400;line-height:1.45}
+  footer .signoff{color:rgba(244,241,234,0.6);font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;margin-top:3rem}
+</style>
+</head>
+<body>
+
+<!-- ───────── HERO ───────── -->
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Webinar Funnel Optimization Proposal</p>
+    <h1>PREP EXPERT</h1>
+    <p style="color:var(--gold);font-size:1.1rem;letter-spacing:.2em;text-transform:uppercase;margin:0">Dr. Shaan Patel · Unlimited Prep</p>
+    <div class="opp-number">$2.35M</div>
+    <p class="sub">Annual Net Revenue uplift on existing ad spend</p>
+    <div class="crises-line">
+      Restore 2025-level unit economics by fixing the <strong>webinar-to-buy conversion rate</strong> and the <strong>post-webinar process</strong> — then layer <strong>multi-student pricing</strong> on top to push past the baseline.
+    </div>
+    <p class="prepared">Prepared by WeConquer Media · April 2026</p>
+  </div>
+</section>
+
+<!-- ───────── NAV ───────── -->
+<nav>
+  <div class="container">
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#crises">Two Crises</a></li>
+      <li><a href="#benchmarks">Benchmarks</a></li>
+      <li><a href="#landing">Landing Page</a></li>
+      <li><a href="#thankyou">Thank You</a></li>
+      <li><a href="#prewebinar">Pre-Webinar Drip</a></li>
+      <li><a href="#emails">Emails</a></li>
+      <li><a href="#pitch">Webinar Pitch</a></li>
+      <li><a href="#postwebinar">Post-Webinar</a></li>
+      <li><a href="#sibling">Sibling Pack</a></li>
+      <li><a href="#impact">Revenue Impact</a></li>
+      <li><a href="#roadmap">90-Day Roadmap</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ───────── EXECUTIVE OVERVIEW ───────── -->
+<section id="overview">
+  <div class="container">
+    <p class="section-eyebrow">Executive Overview</p>
+    <h2>The diagnosis isn't what you think.</h2>
+    <p class="lede">
+      Prep Expert doesn't have a CPL problem. Or an attendance problem. Or an offer-quality problem.
+      You have an <strong>ad-efficiency problem and a post-webinar process problem</strong> — per-webinar spend has tripled since the same period last year, but per-webinar same-day revenue is up only 18%. The pitch mechanics that worked at $45K/webinar aren't doing the same work at $155K/webinar.
+    </p>
+
+    <h3 style="color:var(--gold);margin-top:3rem">Like-for-like — average per-webinar, Q1 2025 vs Q1 2026</h3>
+    <p style="font-size:.95rem;color:var(--muted);font-style:italic;margin-bottom:1rem">
+      Per-webinar averages over the same calendar quarter. This normalizes for the different webinar counts (3 in 2025 Q1, 6 in 2026 Q1) and isolates the per-event performance question. Same-day metrics carry no maturity bias.
+    </p>
+    <table class="metric-table">
+      <thead>
+        <tr>
+          <th>Average per webinar</th>
+          <th class="right">Q1 2025 (3 webinars)</th>
+          <th class="right">Q1 2026 (6 webinars)</th>
+          <th class="right">Direction</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Spend per webinar</td><td class="right">$37K</td><td class="right">$158K</td><td class="right crisis">▲ +331%</td></tr>
+        <tr><td>Registrations per webinar</td><td class="right">2,582</td><td class="right">7,280</td><td class="right">▲ +182% (volume scale)</td></tr>
+        <tr><td>Same-Day Revenue per webinar</td><td class="right">$165K</td><td class="right">$215K</td><td class="right">▲ +30%</td></tr>
+        <tr><td><strong>Same-Day Conv % per webinar</strong> (no maturity bias)</td><td class="right">~4.0%</td><td class="right crisis">~1.6%</td><td class="right crisis">▼ −60%</td></tr>
+        <tr><td><strong>Same-Day ROAS per webinar</strong> (no maturity bias)</td><td class="right">4.49x</td><td class="right crisis">1.36x</td><td class="right crisis">▼ −70%</td></tr>
+        <tr><td>AOV</td><td class="right">$1,583</td><td class="right">$1,815</td><td class="right good">✓ +15%</td></tr>
+        <tr><td>Refund %</td><td class="right">12.8%</td><td class="right good">9.8%</td><td class="right good">✓ Improved</td></tr>
+        <tr><td>Show-Up / Attend %</td><td class="right">31.6%</td><td class="right">26.5%</td><td class="right">▼ partly volume effect</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.85rem;color:var(--muted);margin-top:.5rem"><em>Excluded from the headline: cumulative Net Revenue and Total Gross Margin — 2025 webinars have had up to 14 months of backend tail; 2026 webinars have had 1–3 months. Comparing those numbers directly would overstate the gap. The same-day metrics above are the clean read.</em></p>
+
+    <h3 style="color:var(--gold);margin-top:3rem">The trajectory — quarterly Same-Day ROAS</h3>
+    <p style="font-size:.95rem;color:var(--muted);font-style:italic;margin-bottom:1rem">
+      Same-day metrics carry no maturity bias. The pattern: peak in 2025 Q1, gradual decline through 2025 as ad spend per webinar scaled, slight uptick in 2026 Q1 vs 2025 Q4.
+    </p>
+    <table class="metric-table">
+      <thead>
+        <tr>
+          <th>Quarter</th>
+          <th class="right">Webinars</th>
+          <th class="right">Spend per webinar</th>
+          <th class="right">Same-Day ROAS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>2025 Q1</td><td class="right">3</td><td class="right">$37K</td><td class="right good">4.49x</td></tr>
+        <tr><td>2025 Q2</td><td class="right">3</td><td class="right">$100K</td><td class="right">2.98x</td></tr>
+        <tr><td>2025 Q3</td><td class="right">6</td><td class="right">$116K</td><td class="right">2.12x</td></tr>
+        <tr><td>2025 Q4</td><td class="right">6</td><td class="right">$139K</td><td class="right crisis">1.14x</td></tr>
+        <tr><td><strong>2026 Q1</strong></td><td class="right">7</td><td class="right">$155K</td><td class="right">1.53x</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:1.05rem;margin-top:2rem">
+      The traffic engine works. AOV is up 32%. Refund rate has improved. But ad spend per webinar tripled while per-webinar same-day revenue grew only 18% — so <strong>Same-Day ROAS dropped from 4.13x to 1.42x</strong> over the same January–April window. The pitch and post-webinar mechanics that converted 2025 Q1's $45K-spend audiences aren't doing the same work on 2026's $155K-spend audiences. Recommendations target restoring per-webinar conversion mechanics on the ad spend Prep Expert is already making.
+    </p>
+  </div>
+</section>
+
+<!-- ───────── TWO CRISES ───────── -->
+<section id="crises" class="alt">
+  <div class="container">
+    <p class="section-eyebrow">The Two-Bottleneck Diagnosis</p>
+    <h2>Two bottlenecks. Everything else unlocks after.</h2>
+
+    <div class="crisis-grid">
+      <div class="crisis-card">
+        <span class="crisis-tag">Bottleneck #1</span>
+        <h3>Webinar-to-Buy Conversion Rate</h3>
+        <p>Same-day ROAS per webinar has dropped 70% Q1-over-Q1 (4.49x in Q1 2025 → 1.36x in Q1 2026), and same-day conversion rate per webinar fell from ~4.0% to ~1.6% (−60%). Both are clean apples-to-apples — no backend-tail maturity bias. The room shows up; the pitch isn't closing the way it did when the offer was fresh.</p>
+        <div class="symptom">
+          <strong>Root causes:</strong>
+          <ul style="padding-left:1.2rem;margin:.5rem 0;color:var(--text);font-size:.9rem">
+            <li>The same "35% OFF + WEBINAR35" offer has run unchanged since Jan 2025 — the audience has seen it. Plus: the sales page (unlimitedprep.com) is running an always-on <strong>TODAYONLY35</strong> code with a fake countdown timer 24/7 — even when no webinar is happening. Two fake-countdown discounts running at the same price tier. Sophisticated parents have caught on; the urgency stops working.</li>
+            <li>Format changed mid-stream from LIVE → "Webinar Series" + time slot moved 2pm → 3pm Pacific</li>
+            <li>The pitch fumbles the price reveal ("I think I skipped it") and reads enrolled customer names mid-stack — both kill momentum</li>
+            <li>Stack components are listed as feature dump ("$5,800 SAT courses") without outcome translation — parents see prices, not what those prices <em>buy them</em>. Features sell on price; outcomes sell on value.</li>
+            <li>No enemy/villain, no fear arc — pitch is 100% gain-seeking, 0% loss-aversion. Effective high-ticket pitches need both.</li>
+            <li>Starbucks frame ($5.47/day) is wrong for a $150K+ HHI audience — minimizes the price for parents who don't think in lattes</li>
+            <li><strong>No single belief target.</strong> The current pitch lists features without isolating one belief change that drives the sale. The right belief to target: <em>"The earlier you start prep, the bigger the scholarship — and one scholarship pays for Prep Expert 30+ times over."</em> Every teach moment, every story, every objection answer should compound this single belief.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="crisis-card">
+        <span class="crisis-tag">Bottleneck #2</span>
+        <h3>Post-Webinar Process</h3>
+        <p>In H1 2025, the post-webinar tail consistently added 2–4x on top of same-day revenue over the following 12 months. Late-2025 webinars are running 1.0–1.4x cumulative. 2026 webinars are still maturing (1–3 months), but early signal shows the tail mechanics need rebuilding — the same offer has run unchanged for 18 months and there's no escalating-urgency 7-day sequence to recover the buyers who didn't decide live.</p>
+        <div class="symptom">
+          <strong>Root causes:</strong>
+          <ul style="padding-left:1.2rem;margin:.5rem 0;color:var(--text);font-size:.9rem">
+            <li>Direct-to-checkout model means there is no sales call recovering objections — the email/SMS sequence has to do the work a sales call usually does</li>
+            <li>50,256 unconverted Q1 2026 registrants and 12,262 unconverted attendees with no escalating-urgency 7-day sequence — the largest unspent inventory in the funnel</li>
+            <li>Promo code expires "tonight at 11:59pm Pacific" but the same code reappears on the sales page tomorrow — the urgency contradicts itself, so follow-up emails can't credibly enforce it</li>
+            <li>No replay offered → people who can't decide in-the-moment have nothing to come back to. Every high-ticket webinar funnel needs a 48–72h replay window for late deciders.</li>
+            <li>The 30+ "1 year isn't enough" chat objections are signal, not friction — parents are asking to spend MORE (multi-year), but the sequence treats it as resistance instead of an upsell pathway</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="color:var(--gold);margin-top:3rem">What's Already Working — Don't Touch These</h3>
+    <ul class="checks" style="padding-left:0;list-style:none">
+      <li style="padding:.4rem 0 .4rem 1.6rem;position:relative;color:var(--text)"><span style="color:var(--good);position:absolute;left:0;font-weight:700">✓</span> CPL is best-in-class at $21 (industry benchmark $15–25)</li>
+      <li style="padding:.4rem 0 .4rem 1.6rem;position:relative;color:var(--text)"><span style="color:var(--good);position:absolute;left:0;font-weight:700">✓</span> Attendance rate of 25.4% is acceptable (industry 25–35%)</li>
+      <li style="padding:.4rem 0 .4rem 1.6rem;position:relative;color:var(--text)"><span style="color:var(--good);position:absolute;left:0;font-weight:700">✓</span> AOV grew 32% to $1,960 — multi-year upsell mechanic is working</li>
+      <li style="padding:.4rem 0 .4rem 1.6rem;position:relative;color:var(--text)"><span style="color:var(--good);position:absolute;left:0;font-weight:700">✓</span> Shark Tank credibility, 100K+ student track record, $100M+ in scholarships — best-in-class trust signals</li>
+      <li style="padding:.4rem 0 .4rem 1.6rem;position:relative;color:var(--text)"><span style="color:var(--good);position:absolute;left:0;font-weight:700">✓</span> $2,000 scholarship guarantee is a category-defining risk reversal — almost no one else offers this</li>
+      <li style="padding:.4rem 0 .4rem 1.6rem;position:relative;color:var(--text)"><span style="color:var(--good);position:absolute;left:0;font-weight:700">✓</span> Pay-in-full vs. payment-plan structure is correctly anchored, with $2,000 Academic Masterclasses bonus on pay-in-full as a real lever</li>
+      <li style="padding:.4rem 0 .4rem 1.6rem;position:relative;color:var(--text)"><span style="color:var(--good);position:absolute;left:0;font-weight:700">✓</span> Refund rate improved from 12.0% (2025) to 9.0% (2026) — the program is delivering better; offer claims are stronger</li>
+      <li style="padding:.4rem 0 .4rem 1.6rem;position:relative;color:var(--text)"><span style="color:var(--good);position:absolute;left:0;font-weight:700">✓</span> 30-day money-back guarantee + $2,000 scholarship guarantee = double-stacked risk reversal — strongest in the category</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ───────── BENCHMARKS ───────── -->
+<section id="benchmarks">
+  <div class="container">
+    <p class="section-eyebrow">Industry Benchmarks</p>
+    <h2>Where you stand vs. the category.</h2>
+    <p class="lede">Free-webinar funnels selling high-ticket programs. Traffic and offer-quality benchmarks are clean. Conversion and post-webinar benchmarks need a maturity caveat — 2026 webinars have only had 1–3 months of backend tail to develop.</p>
+
+    <div class="bench-grid">
+      <div class="bench-card">
+        <p class="label">CPL</p>
+        <p class="pe good">$21.36</p>
+        <p class="vs">Industry: $15–25 ✓</p>
+      </div>
+      <div class="bench-card">
+        <p class="label">Attend %</p>
+        <p class="pe good">25.4%</p>
+        <p class="vs">Industry: 25–35% ✓</p>
+      </div>
+      <div class="bench-card">
+        <p class="label">AOV</p>
+        <p class="pe good">$1,960</p>
+        <p class="vs">Industry: $150–375 ✓</p>
+      </div>
+      <div class="bench-card">
+        <p class="label">Same-Day ROAS (Q1 avg)</p>
+        <p class="pe crisis">1.36x</p>
+        <p class="vs">Q1 2025: 4.49x · −70% ✗</p>
+      </div>
+      <div class="bench-card">
+        <p class="label">Reg. Conversion*</p>
+        <p class="pe crisis">1.28%</p>
+        <p class="vs">Industry: 5–10% · *partial maturity</p>
+      </div>
+      <div class="bench-card">
+        <p class="label">Att. Conversion*</p>
+        <p class="pe crisis">5.06%</p>
+        <p class="vs">Industry: 15–25% · *partial maturity</p>
+      </div>
+    </div>
+    <p style="font-size:.85rem;color:var(--muted);margin-top:1rem"><em>* Conversion rates are cumulative through April 13, 2026 — 2026 webinars have only had 1–3 months of backend tail to develop, vs the industry benchmark which reflects fully-mature funnels. Same-Day ROAS comparing Q1 2025 to Q1 2026 (per-webinar averages) is the cleanest apples-to-apples read — 4.49x → 1.36x, a real 70% decline.</em></p>
+  </div>
+</section>
+
+<!-- ───────── LANDING PAGE ───────── -->
+<section id="landing" class="alt">
+  <div class="container">
+    <p class="section-eyebrow">Section 1 / 7 — prepexpert.com/free-webinar</p>
+    <h2>Landing Page</h2>
+    <p class="lede">The page is already working. The headline converts, the press logos do their job. Don't replace what's earning. These are <em>squeeze plays</em> — light-touch additions that lower CPL by lifting registration 5–8 points.</p>
+
+    <div class="roi-block">
+      <div class="roi-row"><span class="label">Current registration rate</span><span class="value">~17–20%</span></div>
+      <div class="roi-row"><span class="label">Optimized target</span><span class="value">24–28%</span></div>
+      <div class="roi-row highlight"><span class="label">Annual opportunity (CPL reduction)</span><span class="value">+$100K</span></div>
+    </div>
+
+    <div class="rec">
+      <span class="num">#1</span>
+      <h3>Add a "You're not alone" line directly below the headline</h3>
+      <p>Every visitor lands on the page asking the same silent question: <em>"who else is here?"</em> Answer it in one sentence. Registration stops feeling like filling out a form and starts feeling like joining a room.</p>
+      <div class="ba">
+        <div class="before"><div class="tag">Before</div>[Headline] → straight into the bullet list of what they'll learn.</div>
+        <div class="after"><div class="tag">After</div>[Headline] → <strong>"Last webinar: 2,547 parents joined — 47 states, all four grade levels (9th–12th)."</strong> → bullet list.</div>
+      </div>
+      <p><strong>Where it goes:</strong> One line, in the hero block, between the H1 and the email form. Static text, updated manually each webinar. No live counter — fake-live counters are a trust risk and a build cost we don't need.</p>
+      <span class="impact">Lift: +2–3 points on registration rate</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#2</span>
+      <h3>Add 3 testimonials with specific dollar amounts above the fold</h3>
+      <p>The current page has press logos but zero parent testimonials. Press logos build awareness; testimonials build belief. Specific dollar amounts and named schools convert harder than any headline rewrite would.</p>
+      <div class="code">"Neil B. won $1.4M in scholarships and went to Vassar tuition-free."
+"Alexis H. got 3 full-ride scholarships worth over $500K — now a Mayo Clinic dermatologist."
+"Michael K. got into UPenn with a 350-point SAT improvement."</div>
+      <span class="impact">Lift: +2–4 points on registration rate</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ───────── THANK YOU PAGE ───────── -->
+<section id="thankyou">
+  <div class="container">
+    <p class="section-eyebrow">Section 2 / 7 — Thank You Page</p>
+    <h2>Thank You Page</h2>
+    <p class="lede">The most under-utilized page in the funnel. Right now it's a confirmation. It should be a conversion engine.</p>
+
+    <div class="roi-block">
+      <div class="roi-row"><span class="label">Current show-up rate</span><span class="value">25.4%</span></div>
+      <div class="roi-row"><span class="label">Optimized target</span><span class="value">32–38%</span></div>
+      <div class="roi-row highlight"><span class="label">Annual opportunity</span><span class="value">+$300K</span></div>
+    </div>
+
+    <div class="rec">
+      <span class="num">#1</span>
+      <h3>Layer calendar-native reminders into the existing calendar add</h3>
+      <p>Auto-add to calendar already exists — that part of the Thank You page is solid. The miss is that the calendar invite isn't sending its own reminders. Right now the show-up reminder pipeline is email-only, and email deliverability is the funnel's softest layer.</p>
+      <ul class="checks">
+        <li>When generating the .ics / Google / Apple calendar event, embed multiple <strong>VALARM</strong> reminders inside the event itself: T-1 day, T-1 hour, T-15 minutes</li>
+        <li>These fire as native OS notifications — phone lock-screen alerts — independent of email deliverability</li>
+        <li>Email reminders continue as backup; calendar push becomes the new primary nudge layer</li>
+      </ul>
+      <span class="impact">Lift: +3–6 points on show-up rate · zero email-deliverability dependency</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#2</span>
+      <h3>One-tap WhatsApp parents group invite — fresh group per webinar</h3>
+      <p>Top-performing high-ticket webinar funnels use this mechanic. Reverse-engineered from confirmed live deployments:</p>
+      <ul class="checks">
+        <li><strong>Fresh group per webinar</strong> — not a single ongoing group. Stale groups kill open rates; per-cohort groups keep urgency live</li>
+        <li><strong>Broadcast-only</strong> (admins post, members can't reply to the group) — runs on SendFlow or similar; prevents spam/self-promo and preserves signal</li>
+        <li><strong>Invite delivered post-registration on the thank-you page</strong> — single tap on mobile opens WhatsApp pre-filled. Reinforced via email + SMS as backup</li>
+        <li><strong>Explicit FOMO framing on the join CTA:</strong> <em>"I've created a private WhatsApp group where I can send things I can't send publicly. The Zoom link drops there."</em> — gates the live event behind the group</li>
+        <li><strong>Content cadence:</strong> short voice notes from Dr. Patel, success-story drops, "what we're covering Sunday" teasers, T-1-day countdown, T-15-min "we're starting now" nudge</li>
+        <li>After the webinar: the group becomes the post-webinar conversion engine for 48–72 hours, then archives</li>
+      </ul>
+      <p style="font-size:.9rem;color:var(--muted);margin-top:1rem"><em>Honesty note:</em> WhatsApp/SMS-tooling case studies on webinar funnels (SendFlow, Wati) report +15–25 points on show-up rate when WhatsApp replaces email-only as the primary nudge channel. Treat the range below as the industry analog, not a direct Prep Expert projection.</p>
+      <span class="impact">Lift: +15–25 points on show-up rate · compounds into post-webinar conversion</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#3</span>
+      <h3>Tease the show-up bonus on the Thank You page (don't pre-deliver it)</h3>
+      <p>The SAT Cheat Sheet + ebook is currently a <strong>show-up bonus</strong>, delivered after the webinar. Keep it that way — pre-delivery would destroy the show-up incentive that's already baked in. The miss isn't the timing; it's that the registrant <em>doesn't know what they're missing</em> if they skip the live event.</p>
+      <p>On the Thank You page, add a clear preview block:</p>
+      <div class="code">"YOU'RE IN. Sunday at 1pm ET.
+
+Here's what you'll get if you show up live (we won't send it otherwise):
+
+→ Dr. Patel's SAT Cheat Sheet — the exact 12-page rapid-prep document students use to lift 200+ points
+→ The Scholarship eBook — every grant + scholarship pathway broken down by GPA tier
+→ Live Q&amp;A with Dr. Patel
+→ Bonus: parents who stay to the end get [stay-bonus]
+
+Miss the live? You get a recording — but not the bonus pack."</div>
+      <p style="font-size:.9rem;color:var(--muted);margin-top:1rem"><em>Why preview-not-deliver:</em> Pre-content is a strong conversion predictor — but only for assets that feel like a teaser, not a finished deliverable. The cheat sheet's job here is show-up incentive, not pre-consumption. We tease the value on the Thank You page, deliver it post-attend, and reserve pre-webinar content (Section 3) for value-in-advance teasers that don't replace the show-up reward.</p>
+      <span class="impact">Lift: +3–5 points on show-up rate · zero cannibalization of bonus value</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#4</span>
+      <h3>Add a $97 VIP upsell — tripwire + ROAS lever</h3>
+      <p>The VIP upsell does two distinct jobs at once. Both compound.</p>
+      <ul class="checks">
+        <li><strong>Job 1 — Tripwire / buyer qualification.</strong> A $97 commitment <em>before</em> the webinar predicts the $1,999 buy. Anyone who's already pulled out their card is 3–4x more likely to convert on the webinar offer than a free registrant. The room shows up pre-sorted — Dr. Patel is no longer pitching to 100% cold attendees, he's pitching to a room with 15–25% already-paid customers, and the social-proof + conversion math both compound.</li>
+        <li><strong>Job 2 — ROAS / break-even on ad spend.</strong> Even at modest take-rates, the $97 revenue offsets the cost of the lead before the webinar even runs. At 1,000 registrants × 10% take = $9.7K per webinar in tripwire revenue alone — pure margin against ad spend. Effective CAC drops, break-even moves earlier in the funnel, and ad budget can scale without waiting on backend conversion to validate spend. (Industry benchmark for a $97 post-webinar tripwire: 5–10% take. Anything higher is a stretch goal, not a planning assumption.)</li>
+        <li><strong>Why it doesn't cannibalize Unlimited Prep:</strong> the $97 is purely a <em>diagnostic</em> — it tells the parent what to do, not how to do it. Unlimited Prep is the implementation. Different job, different price tier, different commitment.</li>
+      </ul>
+      <p>Recommended offer copy on the Thank You page:</p>
+      <div class="code">"YES — I want Dr. Patel's grade-specific Scholarship Roadmap (normally $497 — yours for $97 today only).
+
+Includes:
+→ Custom roadmap by grade (9th, 10th, 11th, 12th)
+→ Top 15 scholarships your child qualifies for
+→ Application timeline calendar
+→ Bonus: Recording of last quarter's Scholarship Summit"</div>
+      <span class="impact">Revenue: ~$10K per webinar at 10% take · 3–4x conversion lift on attendees who buy the $97 · ROAS break-even moves pre-webinar</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ───────── PRE-WEBINAR WARM-UP DRIP ───────── -->
+<section id="prewebinar">
+  <div class="container">
+    <p class="section-eyebrow">Section 3 / 7 — Pre-Webinar Warm-Up Drip</p>
+    <h2>Pre-Webinar Warm-Up</h2>
+    <p class="lede"><strong>Deliver tangible value before asking for the sale.</strong> Industry observation: parents who consume pre-webinar content convert 3–5x higher than cold registrants. The cheat sheet stays a show-up bonus (it's the live-event reward, not pre-content), but everything <em>else</em> in this drip is a small result delivered in advance — each builds trust, primes the pitch, and makes the Sunday webinar feel like episode 6 of a series, not a cold call.</p>
+
+    <div class="roi-block">
+      <div class="roi-row"><span class="label">Current pre-webinar nurture</span><span class="value crisis">None</span></div>
+      <div class="roi-row"><span class="label">Optimized cadence</span><span class="value">5–7 day drip · WhatsApp primary</span></div>
+      <div class="roi-row highlight"><span class="label">Annual opportunity (show-up + conversion compound)</span><span class="value">+$150K</span></div>
+    </div>
+
+    <div class="rec">
+      <span class="num">#1</span>
+      <h3>Daily voice notes from Dr. Patel — 60–90 seconds, in WhatsApp</h3>
+      <p>The single highest-leverage asset because it's free to produce, uniquely his, and impossible to fake. Personal, raw, unscripted. <em>"Hey, it's Shaan — quick story for you about a student named Neil…"</em></p>
+      <ul class="checks">
+        <li>One per day from registration to webinar (T-5 through T-1)</li>
+        <li>Each ends with an open loop tying to the webinar: <em>"Tomorrow I'll share the scholarship pathway most parents miss"</em></li>
+        <li>Pinned in the WhatsApp group so late-registering parents see the latest one first</li>
+        <li><strong>Built as an evergreen library, not weekly fresh content.</strong> Record ~10 voice notes once, each anchored on a named past student (Neil, Alexis, Michael, etc.) — these stay relevant cohort to cohort. Rotate through the library; swap a couple per quarter as new wins come in. No "last week" framing — the stories are timeless.</li>
+      </ul>
+      <span class="impact">Lift: +5–10 points on show-up rate · primary trust-builder</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#2</span>
+      <h3>Daily success-story drops with prep duration explicit</h3>
+      <p>One specific student per day in WhatsApp. Name + dollar amount + school + <strong>prep duration</strong>. The prep duration angle is the killer detail — it doubles as a sales argument for not waiting (see Webinar Pitch Rec #5).</p>
+      <div class="code">DAY T-4 SUCCESS STORY
+
+Meet Neil B.
+→ Started Unlimited Prep in 9th grade
+→ 3 years of compounding practice
+→ Walked into senior year with a 1540
+→ Won $1.4M in scholarship offers — went to Vassar tuition-free
+
+The earlier you start, the bigger the scholarship.
+Sunday's webinar shows you exactly how.</div>
+      <span class="impact">Lift: +3–5 points on show-up rate · sets up the "earlier prep = bigger scholarship" reframe before the pitch</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#3</span>
+      <h3>2–3 minute "common mistake" videos — vertical, captioned, native-mobile</h3>
+      <p>Short teach moments that build authority without giving away the bonus. Each one ends with <em>"we'll go deeper on this Sunday."</em></p>
+      <ul class="checks">
+        <li>"The 11th-grade mistake that costs parents $50K in scholarships"</li>
+        <li>"Why test-optional schools quietly admit test-submitters at 2–3x the rate"</li>
+        <li>"The PSAT window most parents miss until it's too late"</li>
+        <li>"$232K in tuition — what a National Merit Scholar actually saves"</li>
+      </ul>
+      <p>Drop in WhatsApp + linked from email. Each ~2–3 min, vertical 9:16 format, captioned for muted autoplay.</p>
+      <span class="impact">Lift: +2–4 points on show-up rate · primes the pitch's enemy/villain frame (Webinar Pitch Rec #8)</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#4</span>
+      <h3>"Before Sunday: Here's What Changed" — short PDF or webpage</h3>
+      <p>Different from the cheat sheet. Doesn't give away the show-up bonus. Sets the frame for the webinar: <em>"The SAT changed in 2024. Here's what most parents don't know yet."</em></p>
+      <ul class="checks">
+        <li>5–8 pages or a single scrollable webpage — short, scannable</li>
+        <li>Drops at T-2 days via email + WhatsApp link</li>
+        <li>Builds curiosity, not consumption: enough to feel informed, not enough to feel finished</li>
+        <li>Closes with: <em>"The full breakdown — including the 3 strategies that lift scores 200+ points — happens live Sunday at 1pm ET"</em></li>
+      </ul>
+      <span class="impact">Lift: +2–3 points on show-up rate · sets the curiosity hook for the pitch's teach moments</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#5</span>
+      <h3>Channel split: WhatsApp primary, email backup</h3>
+      <p>The two channels have different jobs. Use both — but don't split the load equally.</p>
+      <table class="metric-table" style="font-size:.85rem">
+        <thead><tr><th>Channel</th><th>Job</th><th>Open Rate</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td><strong>WhatsApp group</strong></td><td>Presence + warmth + show-up</td><td>90%+</td><td>Voice notes, success stories, countdown nudges, day-of "we're starting now"</td></tr>
+          <tr><td>Email</td><td>Substance + backup + archival</td><td>20–30%</td><td>PDFs, longer videos, calendar reminders, deliverability backstop</td></tr>
+        </tbody>
+      </table>
+      <p>Same content can echo across both — voice note in WhatsApp, transcript link in email — but WhatsApp is the primary channel because that's where attention is. Don't waste the channel on long-form content; reserve it for short, present, daily nudges.</p>
+      <span class="impact">Compounds with all of Recs #1–4 · ensures the drip actually gets consumed</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#6</span>
+      <h3>Cadence — one asset per day, no more, no less</h3>
+      <p>Over-frequency burns the channel. Under-frequency loses presence. One per day, every day, from registration through the webinar.</p>
+      <table class="metric-table" style="font-size:.85rem">
+        <thead><tr><th>Day</th><th>Asset</th><th>Channel</th></tr></thead>
+        <tbody>
+          <tr><td>T-5 (or registration day)</td><td>Welcome voice note + group rules + "what to expect"</td><td>WhatsApp + email</td></tr>
+          <tr><td>T-4</td><td>Success story #1 (early-start: 9th grade → $1.4M)</td><td>WhatsApp</td></tr>
+          <tr><td>T-3</td><td>Common-mistake video #1</td><td>WhatsApp + email link</td></tr>
+          <tr><td>T-2</td><td>"Before Sunday: Here's What Changed" PDF</td><td>Email + WhatsApp link</td></tr>
+          <tr><td>T-2</td><td>Success story #2 (late-start express: 12th grade → top-50 admit)</td><td>WhatsApp</td></tr>
+          <tr><td>T-1</td><td>Day-of agenda preview + "what we're covering tomorrow"</td><td>WhatsApp + email</td></tr>
+          <tr><td>T-1 hour</td><td>"We're starting in 60 minutes — Zoom link in this group"</td><td>WhatsApp + SMS</td></tr>
+          <tr><td>T-15 min</td><td>"Starting now — join here"</td><td>WhatsApp</td></tr>
+        </tbody>
+      </table>
+      <p>If a parent registers late (T-2 or T-1), they get a compressed version — 2–3 voice notes back-to-back on join, then they're in sync with the live drip.</p>
+      <span class="impact">Compounding lift across all assets · ensures consumption without channel burn</span>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── EMAIL SEQUENCE ───────── -->
+<section id="emails" class="alt">
+  <div class="container">
+    <p class="section-eyebrow">Section 4 / 7 — Email & SMS Reminder Sequence</p>
+    <h2>Reminder Sequence</h2>
+    <p class="lede">Same subject lines, same cadence, same audience for 18 months. Pattern interrupts are non-negotiable.</p>
+
+    <div class="roi-block">
+      <div class="roi-row"><span class="label">Current show-up rate</span><span class="value">25.4%</span></div>
+      <div class="roi-row"><span class="label">Optimized target (with WhatsApp + new subject lines)</span><span class="value">32–38%</span></div>
+      <div class="roi-row highlight"><span class="label">Annual opportunity</span><span class="value">+$150K</span></div>
+    </div>
+
+    <div class="rec">
+      <span class="num">#1</span>
+      <h3>Replace boring subject lines with pattern interrupts</h3>
+      <table class="metric-table" style="font-size:.85rem">
+        <thead><tr><th>Timing</th><th>❌ Current style</th><th>✅ Replacement</th></tr></thead>
+        <tbody>
+          <tr><td>7 days out</td><td>"You're registered for the webinar!"</td><td>"⚠️ Your show-up bonus (SAT Cheat Sheet + Scholarship eBook) only delivers if you're in the live room"</td></tr>
+          <tr><td>3 days out</td><td>"Webinar in 3 days"</td><td>"The 'free college' question I get 100x a day from parents"</td></tr>
+          <tr><td>1 day out</td><td>"Reminder: webinar tomorrow"</td><td>"I almost cancelled tomorrow's webinar. Here's why I didn't."</td></tr>
+          <tr><td>2 hours</td><td>"Starting soon"</td><td>"Starting in 2 hours — the cheat sheet only goes to live attendees"</td></tr>
+          <tr><td>15 min</td><td>"Join now"</td><td>"⏰ 15 min. Your kid's tuition decision starts now."</td></tr>
+        </tbody>
+      </table>
+      <span class="impact">Lift: +15–25% on email-driven show-up</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#2</span>
+      <h3>Layer SMS / WhatsApp on top of email</h3>
+      <p>Email + SMS combined show-up runs 50–60% vs. 25% email-only. Critical for $150K+ HHI parents who get hundreds of work emails per day.</p>
+      <span class="impact">Lift: +10–15 points on show-up</span>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── WEBINAR PITCH ───────── -->
+<section id="pitch">
+  <div class="container">
+    <p class="section-eyebrow">Section 5 / 7 — The Pitch</p>
+    <h2>The Webinar Pitch</h2>
+    <p class="lede">This is <strong>Bottleneck #1</strong> — the highest-leverage section in this audit. Q1-over-Q1, same-day ROAS per webinar dropped 70% (4.49x → 1.36x) on the same offer at higher AOV. Price hasn't moved in 18 months, so price isn't the broken lever — the offer + pitch mechanics are. The fix has three parts, in this order: <strong>(1) rebuild the offer mechanics</strong> so urgency is real instead of fake, <strong>(2) rebuild the pitch itself</strong> phase by phase, <strong>(3) add the operational support</strong> that catches the buyers the pitch almost converted. Every rec is grounded in the Jan 11 webinar transcript and chat data, sequenced the way Dr. Patel would actually implement them.</p>
+
+    <div class="roi-block">
+      <div class="roi-row"><span class="label">Current same-day ROAS (Q1 2026 avg)</span><span class="value">1.36x</span></div>
+      <div class="roi-row"><span class="label">Optimized target (toward Q1 2025 levels)</span><span class="value">2.0–2.5x</span></div>
+      <div class="roi-row highlight"><span class="label">Annual Net Revenue opportunity</span><span class="value">+$1.0M</span></div>
+    </div>
+
+    <div style="background:var(--card);border:1px solid var(--text);border-left:4px solid var(--gold);padding:1.5rem 1.8rem;margin:2rem 0;border-radius:0">
+      <p style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;margin:0 0 .8rem;font-weight:500">The tone shift — speak as if they're already enrolled</p>
+      <p style="font-size:1rem;margin:0 0 .8rem">Across the entire 90 minutes — opening, teach, stack, close, Q&amp;A — Dr. Patel's tone needs one fundamental shift: <strong>speak to the audience as if it's already certain they're going to enroll, not as if he's presenting an idea for them to debate.</strong> The current pitch frames every benefit conditionally ("if you decide to enroll…", "should you choose to join us…", and the deadliest one: <em>"whether you enroll or not, I wish you all the best of luck"</em>). That tone tells parents the decision is still open — and an open decision in a 90-minute room becomes a "no" by default.</p>
+      <p style="font-size:1rem;margin:0 0 .5rem"><strong>The fix is linguistic, not strategic.</strong> Replace conditional framing with assumptive framing throughout:</p>
+      <table style="width:100%;border-collapse:collapse;font-size:.92rem;margin:.5rem 0">
+        <thead><tr style="border-bottom:1px solid var(--text)"><th style="text-align:left;padding:.5rem .4rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:500">❌ Conditional (current)</th><th style="text-align:left;padding:.5rem .4rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:500">✅ Assumptive (rebuilt)</th></tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:.6rem .4rem;color:var(--crisis);font-style:italic">"If you enroll, you'll get…"</td><td style="padding:.6rem .4rem;color:var(--good)">"On day 1 of the cohort, you log in and you'll see…"</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:.6rem .4rem;color:var(--crisis);font-style:italic">"Should you choose to join…"</td><td style="padding:.6rem .4rem;color:var(--good)">"When we meet you on the kickoff call Sunday…"</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:.6rem .4rem;color:var(--crisis);font-style:italic">"This program is for people who…"</td><td style="padding:.6rem .4rem;color:var(--good)">"Your first 1-on-1 tutoring slot opens within 48 hours of kickoff."</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:.6rem .4rem;color:var(--crisis);font-style:italic">"If you decide it's right for you…"</td><td style="padding:.6rem .4rem;color:var(--good)">"Once you're in the May Cohort, here's what your first week looks like…"</td></tr>
+          <tr><td style="padding:.6rem .4rem;color:var(--crisis);font-style:italic">"Whether you enroll or not, best of luck."</td><td style="padding:.6rem .4rem;color:var(--good)">"Cart closes Saturday night — kickoff is Sunday. See you in the room."</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.95rem;margin:.8rem 0 0">Same content. Same offer. Same price. The shift is purely tonal — but it removes the implicit permission to walk away that the current framing keeps handing parents at the wrong moments. Apply it everywhere: in Phase 1 when grade-specific paths are introduced, throughout Phase 3 when the stack is described, and especially in Phase 4 (close) and Phase 5 (Q&amp;A endings).</p>
+    </div>
+
+    <div style="background:var(--card-2);border:1px solid var(--text);border-left:4px solid var(--accent);padding:1.8rem 2rem;margin:2rem 0;border-radius:0">
+      <p style="font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;margin:0 0 .8rem;font-weight:500">The Value Equation — current vs after</p>
+      <p style="font-size:.95rem;font-style:italic;color:var(--muted);margin:0 0 1rem">A high-ticket offer's perceived value is governed by four levers: <strong>Value = (Dream Outcome × Perceived Likelihood) ÷ (Time Delay × Effort &amp; Sacrifice)</strong>. Score the existing offer against the recommendations. Every rec below is selected because it lifts at least one of these four levers.</p>
+      <table style="width:100%;border-collapse:collapse;font-size:.92rem;font-family:'Inter Tight',sans-serif">
+        <thead>
+          <tr style="border-bottom:1px solid var(--text)">
+            <th style="text-align:left;padding:.6rem .4rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:500">Lever</th>
+            <th style="text-align:left;padding:.6rem .4rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:500">Current state</th>
+            <th style="text-align:left;padding:.6rem .4rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:500">After recommendations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:.7rem .4rem;font-weight:600">Dream Outcome ↑</td><td style="padding:.7rem .4rem">$100M+ aggregate, $1.4M individual stories — but buried in feature-dump stack</td><td style="padding:.7rem .4rem;color:var(--good)">Debt-free college reframe; outcome-translated stack; named-student social proof anchored to each line item</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:.7rem .4rem;font-weight:600">Perceived Likelihood ↑</td><td style="padding:.7rem .4rem">$2K guarantee + Shark Tank — strong but mentioned in passing</td><td style="padding:.7rem .4rem;color:var(--good)">Guarantee centerpieced; cohort + kickoff = "I'll start with peers" social proof; multi-year compounding evidence</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:.7rem .4rem;font-weight:600">Time Delay ↓</td><td style="padding:.7rem .4rem">Vague start; 12-month program with no shared kickoff</td><td style="padding:.7rem .4rem;color:var(--good)">Day 7–8 cohort kickoff = "we start next Sunday"; 12th-grade Express path = first tutoring slot within 48h of kickoff</td></tr>
+          <tr><td style="padding:.7rem .4rem;font-weight:600">Effort &amp; Sacrifice ↓</td><td style="padding:.7rem .4rem">Parent-led implementation; "figure it out from courses"</td><td style="padding:.7rem .4rem;color:var(--good)">Done-for-you Scholarship Roadmap (VIP $97); cohort + kickoff replaces self-direction; WhatsApp group answers questions</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.85rem;color:var(--muted);font-style:italic;margin:1rem 0 0">Net effect: every dimension of the value equation moves in the right direction without raising price. That's how value-to-price ratio compounds — and how Same-Day ROAS recovers.</p>
+    </div>
+
+
+    <div style="margin:4rem 0 2rem;padding-top:2.5rem;border-top:2px solid var(--text)">
+      <p class="section-eyebrow" style="margin-bottom:.5rem">Chapter 1 of 3</p>
+      <h3 style="font-family:'Fraunces',serif;font-weight:500;font-size:2rem;text-transform:none;letter-spacing:-0.02em;color:var(--text);margin:.4rem 0 .6rem">The Offer Mechanics — the foundation</h3>
+      <p style="color:var(--muted);font-style:italic;margin:0">Without these, the pitch fixes don't compound. Build this first.</p>
+    </div>
+
+    <div class="rec">
+      <span class="num">#1</span>
+      <h3>The new offer architecture — Cohort + tiered discount + 24h bonus time-lock</h3>
+      <p>The current "today only 35% off" is structurally dishonest. The discount comes back next webinar. The website (unlimitedprep.com) sells the same product evergreen at $3,076 with no clock. Parents intuitively know the urgency is fake — the Jan 11 chat had 13 explicit "is it too late?" objections proving it. Replace the fake urgency with three real layers built on top of a real cohort.</p>
+
+      <p style="margin-top:1.5rem"><strong>Layer 1 — The cohort frame (the urgency engine — two real drivers, not one fake one):</strong></p>
+      <ul class="checks">
+        <li>Each webinar enrolls into a specifically named cohort: "The May Scholarship Cohort," "The June Scholarship Cohort"</li>
+        <li><strong>Driver 1 — Hard seat cap per cohort.</strong> Each cohort accepts a fixed number of students (recommended starting point: <strong>150 seats</strong>, calibrated against current per-webinar buyer volume so the cap is reachable but not trivially so). Once seats are gone, that cohort is closed — wait for the next one. The cap is real: it's anchored to the kickoff call's group-coaching capacity (Dr. Patel can't run a quality kickoff with 500 families). Surface the live remaining-seat count in the pitch slide ("47 of 150 enrolled · 103 seats left"), in every WhatsApp drop ("38 seats left in the May Cohort"), and in every reminder email subject line as the cohort fills.</li>
+        <li><strong>Driver 2 — The kickoff call is the deadline.</strong> Every cohort has a live group kickoff call on <strong>Day 7 or Day 8 after the webinar</strong>, hosted by Dr. Patel (or a senior instructor). Every enrolled family meets the cohort, gets their grade-specific roadmap, and starts together on the same day. That shared start is what makes it feel like a cohort instead of a course someone bought. <strong>Cart closes the night before kickoff</strong> — not because of a fake countdown, because the room is starting and you can't join after it has begun.</li>
+        <li><strong>Together, double urgency, both real:</strong> "Seats are filling AND the room is starting." Miss the May cohort = wait 4–6 weeks for June. Same product, same price tier, but real consequences to delay.</li>
+        <li>Surface the cohort name + kickoff date + remaining-seat count everywhere the offer appears: pitch slide, post-webinar emails, WhatsApp drip, checkout page. Same three data points, every touchpoint.</li>
+      </ul>
+
+      <p style="margin-top:1.5rem"><strong>Layer 2 — Tiered discount (Dr. Patel chooses A or B based on his unit economics):</strong></p>
+      <div class="ba">
+        <div class="before">
+          <div class="tag">Option A — Aggressive</div>
+          <strong>Live during webinar:</strong> 50% off → $1,538<br>
+          <strong>Within 7 days:</strong> 35% off → $1,999<br>
+          <strong>After 7 days:</strong> full $3,076 or wait for next cohort<br><br>
+          <em>Drives the strongest live-day close behavior. Compresses margin ~$461 per live buyer; only worth it if the live-day conversion bump is verifiable in testing.</em>
+        </div>
+        <div class="after">
+          <div class="tag">Option B — Conservative</div>
+          <strong>Live during webinar:</strong> 35% off → $1,999<br>
+          <strong>Within 7 days:</strong> 25% off → $2,307<br>
+          <strong>After 7 days:</strong> full $3,076 or wait for next cohort<br><br>
+          <em>Preserves margin. Smaller live-day spike, cleaner unit economics. Recommended starting point — A/B test against Option A once the cohort mechanic is stable.</em>
+        </div>
+      </div>
+
+      <p style="margin-top:1.5rem"><strong>That's it — two layers, no bonus expiry mechanic.</strong> The cohort kickoff date is the hard deadline. The discount tier is the live-day urgency. No "lose the bonuses if you don't act in 24h" complication — the existing program (1-on-1 tutoring, courses, guarantee, etc.) stays intact for every buyer regardless of when they enroll within the 7-day window. Keep the offer simple; let the cohort and the discount do the work.</p>
+
+      <p style="margin-top:1.5rem;background:var(--card-2);border-left:3px solid var(--accent);padding:1rem 1.2rem;font-size:.95rem"><strong>Why this works — every discount needs a credible reason:</strong> Sophisticated buyers reject discounts they can't explain. The current "today only because it's a webinar" doesn't survive scrutiny — the same code reappears next webinar. The cohort frame is the reason: <em>"35% off because we're filling the May Cohort, which kicks off May 12, and Dr. Patel can't run a quality kickoff with 500 families."</em> Real reason. Real deadline. Real cap. The discount is now defensible, which is why it converts.</p>
+
+      <span class="impact">Lift: 1.5–2x conversion · restores credible urgency · 7-day cart captures the long-tail buyers (spouse-discussion, finance-check, comparison shoppers)</span>
+    </div>
+
+    <div style="margin:4rem 0 2rem;padding-top:2.5rem;border-top:2px solid var(--text)">
+      <p class="section-eyebrow" style="margin-bottom:.5rem">Chapter 2 of 3</p>
+      <h3 style="font-family:'Fraunces',serif;font-weight:500;font-size:2rem;text-transform:none;letter-spacing:-0.02em;color:var(--text);margin:.4rem 0 .6rem">The Pitch Flow — phase by phase</h3>
+      <p style="color:var(--muted);font-style:italic;margin:0">The Jan 11 webinar runs 115 minutes across five phases. Each phase has a specific job. Here's what's broken in each one and exactly what to change.</p>
+    </div>
+
+    <div class="rec">
+      <span class="num">#2</span>
+      <h3>Phase 1 — The Opening (00:00–22:00): plant the domino, speak to all four grades</h3>
+      <p>The opening has two jobs: <strong>(1) plant the single belief that has to land for the sale to happen</strong>, and <strong>(2) make every grade in the room feel like the webinar was built for them.</strong> Currently it does neither — the opening reads all four grades as one room, then later in the pitch Dr. Patel tells them <em>"you can get started in 12th grade with Prep Expert, but it's a little bit late"</em> and <em>"for 12th graders, there are no more chances to try to get National Merit."</em> Those two phrases disqualified the largest segment in the room and triggered 13 "is it too late?" objections in chat.</p>
+
+      <div style="background:var(--card-2);border:1px solid var(--text);border-left:4px solid var(--gold);padding:1.4rem 1.6rem;margin:1.5rem 0;border-radius:0">
+        <p style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;margin:0 0 .6rem;font-weight:500">Plant the domino in the opening</p>
+        <p style="font-size:1rem;margin:0 0 .5rem">Every high-converting webinar has <strong>one belief</strong> the audience has to accept for the sale to feel obvious. We call it <em>the domino</em> — knock it over in the opening, and every other piece of the pitch (teach, stack, close) compounds it. The right domino for Prep Expert:</p>
+        <p style="font-size:1.1rem;font-style:italic;color:var(--gold);font-weight:500;margin:.5rem 0 .8rem">"The earlier you start prep, the bigger the scholarship — and one scholarship pays for Unlimited Prep 30+ times over."</p>
+        <p style="font-size:.95rem;margin:0">This domino is built for Prep Expert because it does double duty: it ties the offer to the audience's <em>actual</em> goal (paying for college without debt), AND it gives every grade in the room a reason to act now (early grades = compound the advantage; late grades = don't lose the remaining time). That's why it sets up the grade-specific narratives below — same domino, three angles, every parent feels addressed.</p>
+      </div>
+
+      <p style="margin-top:1.5rem"><strong>Use the domino to reframe each grade's path:</strong></p>
+      <ul class="checks">
+        <li><strong>12th grade — the Express path:</strong> <em>"The earlier you start, the bigger the scholarship — but starting NOW with 6–8 weeks before your next test still pays for itself many times over. We fast-track 12th graders inside the cohort — kickoff is in 7 days and your first 1-on-1 tutoring slot is locked in within 48 hours of kickoff."</em> 12th graders go from "you're too late" to "this is built for you."</li>
+        <li><strong>11th grade — the Sweet spot:</strong> <em>"You're at the exact moment where the domino tips. PSAT National Merit window is open right now and the spring SAT is 8 weeks away. The May cohort hits this exactly. Miss it and you're a month behind."</em></li>
+        <li><strong>9th/10th grade — the Early-start advantage:</strong> <em>"This is where the domino pays the most. Every month earlier compounds. Past students who started in 9th grade — Neil B. won $1.4M. The earlier you start, the bigger the scholarship."</em> Pair every early-start testimonial with prep duration explicitly ("started in 9th grade, won $1.4M") so the multi-grade audience becomes a positive instead of a whipsaw.</li>
+      </ul>
+      <p>Same product, same price, same cohort — three angles on the same domino, every grade-parent feels seen. Then every teach moment, every stack item, and every objection answer in Phases 2–5 reinforces the domino. If a parent leaves the webinar believing it, they buy. If they don't, they don't — regardless of how good the bonuses are. Make the domino land.</p>
+
+      <span class="impact">Lift: +8–12% on conversion · plants the core thread that compounds across the rest of the pitch · rescues the largest segment from objection-killed exit</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#3</span>
+      <h3>Phase 2 — The Teach (22:00–60:00): keep what's working, fix what's bleeding</h3>
+      <p>The three core teach moments — Kiss of Death (00:32), TAC math (00:36), Extreme-LY adverbs (00:40) — are already working. Each produced visible "yes" walls in the Jan 11 chat. <strong>Don't change them.</strong> The high-leverage fixes in this phase are operational, not content:</p>
+
+      <ul class="checks">
+        <li><strong>Compress the 12th-grade scholarship section from ~13 minutes to 7 minutes.</strong> The current section rambles past the point of adding value, and every minute past 7 hurts closing energy. Banks 6 minutes for the close — the highest-leverage minute swap in the whole webinar.</li>
+        <li><strong>Bake top objection answers into the body, not Q&amp;A.</strong> The Jan 11 chat had three dominant objections that killed buyers before the close: siblings (15 mentions), multi-year — "1 year isn't enough" (30+ mentions = a request for upsell, not resistance), and "is it too late?" (13 mentions). Add 60-second answers in specific spots: multi-student during the National Merit segment, multi-year compounding during the 9th-grade segment, 12th-grade Express-path during the senior segment. By Q&amp;A, the high-intent buyers have already made up their minds — answer them while they're still listening.</li>
+        <li><strong>Each teach moment ends with a hook back to the offer</strong> — not just "we'll cover that," but "this is exactly why the May cohort matters." Threads the domino from Phase 1 through the body so the close doesn't feel like a topic switch.</li>
+      </ul>
+
+      <span class="impact">Lift: +3–5% on conversion · banks 6 minutes for the close · resolves objections in-room before they kill conversion</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#4</span>
+      <h3>Phase 3 — The Pitch / Stack (60:00–90:00): three concrete changes</h3>
+
+      <p style="margin-top:1.5rem"><strong>(a) Make the $2,000 Scholarship Guarantee the centerpiece — not a footnote.</strong></p>
+      <p>The guarantee is the strongest single element of the offer. Currently it's mentioned once, in passing, after the price. It should be the first thing every parent hears about the offer and the last thing they remember before they click buy. Three changes — keep the existing $2,000 dollar amount (raising it would require average-scholarship-per-student data we don't have):</p>
+      <ul class="checks">
+        <li><strong>Lead the offer section with it</strong> — anchor the entire stack to risk reversal first, before any component is shown</li>
+        <li><strong>Make the language unambiguous:</strong> <em>"If your child doesn't earn at least $2,000 in scholarship offers within 12 months of completing the program, you get 100% of your investment refunded. No questions, no qualifications."</em> Keep it simple — the existing 30-day money-back already covers the broader "if it doesn't work" risk.</li>
+        <li><strong>Stack social proof on top:</strong> <em>"The $2,000 is the floor. Past Prep Expert students have collectively won $100M+. Neil B. won $1.4M. Alexis H. $500K."</em> Real numbers, real names. The guarantee is the floor; past students show the ceiling.</li>
+      </ul>
+
+      <p style="margin-top:1.5rem"><strong>(b) Sell the outcome of every stack item, not just the dollar value.</strong></p>
+      <p>The current pitch lists features and dollar amounts: <em>"10 hrs of 1-on-1 tutoring — $1,000 value. Unlimited SAT courses — $5,800 value."</em> Parents don't buy features; they buy what features <em>do</em>. Apply this template to every line:</p>
+      <div class="ba">
+        <div class="before">
+          <div class="tag">Before (current)</div>
+          "10 hours of 1-on-1 tutoring with our top instructors — $1,000 value."
+        </div>
+        <div class="after">
+          <div class="tag">After (rebuilt)</div>
+          "10 hours of 1-on-1 tutoring with a 99th-percentile scorer who personally hit a 1560+. <strong>What that means:</strong> the difference between a 1380 and a 1460 — which in your state is the National Merit cutoff. <strong>What that means in dollars:</strong> a National Merit Scholar averages $232,000 in tuition savings over four years. <strong>Retail $1,000.</strong> Yours, included."
+        </div>
+      </div>
+
+      <p style="margin-top:1.5rem"><strong>The stack — same line items Dr. Patel uses today, with outcome translation added:</strong></p>
+      <div class="code">CURRENT STACK (from the Jan 11 deck — keep these line items)
+─────────────────────────────────────────────────────────
+1. Unlimited SAT/PSAT courses (1 yr access)        $5,800
+2. Unlimited ACT courses (1 yr access)             $4,700
+3. Live cohort sessions w/ Dr. Patel               $4,200
+4. 10 hrs of 1-on-1 tutoring                       $1,000
+5. $2,000 Scholarship Guarantee                    $2,000
+─────────────────────────────────────────────────────────
+SUBTOTAL                                          $17,700</div>
+      <p>Same components, same dollar values — Dr. Patel keeps the stack he already presents. The change is what he <em>says</em> about each line: each one gets the four-layer outcome template (feature → outcome → proof → dollar). No fabricated numbers, no inflation.</p>
+
+      <p style="margin-top:1.5rem"><strong>(c) Reveal the stack BEFORE the price reveal, not after.</strong></p>
+      <p>The current pitch reveals price, then layers components afterward as <em>"oh, I almost forgot"</em> additions ([01:18:47], [01:25:55]). That's inverted from every working webinar pitch we've benchmarked. The stack must compound the value perception <strong>before</strong> the price drops, so when the number lands it feels small relative to what's on screen. No new bonus mechanic — just sequence the existing components correctly.</p>
+
+      <p style="margin-top:1.5rem"><strong>The total stack — honest math, no fabrication:</strong></p>
+      <div class="code">STACK VALUE — same line items, properly sequenced
+─────────────────────────────────────────────────────────
+1. Unlimited SAT/PSAT courses (1 yr)               $5,800
+2. Unlimited ACT courses (1 yr)                    $4,700
+3. Live cohort sessions w/ Dr. Patel               $4,200
+4. 10 hrs of 1-on-1 tutoring                       $1,000
+5. $2,000 Scholarship Guarantee                    $2,000
+─────────────────────────────────────────────────────────
+TOTAL VALUE                                       $17,700
+
+Anchored against:  Website retail $3,076      =  5.75× value
+Anchored against:  Live price (Option A) $1,538 = 11.5× value
+Anchored against:  Live price (Option B) $1,999 =  8.85× value</div>
+
+      <p style="margin-top:1.5rem"><strong>The locked slide order (pre-scripted, stopwatch-rehearsed):</strong></p>
+      <table class="metric-table" style="font-size:.85rem">
+        <thead><tr><th>#</th><th>Slide</th><th>What's on screen</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Guarantee headline</td><td>"$2,000 Scholarship Guarantee — full refund if your child doesn't earn $2,000+ in offers"</td></tr>
+          <tr><td>2</td><td>Stack intro</td><td>"Here's exactly what you get in Unlimited Prep"</td></tr>
+          <tr><td>3–7</td><td>Stack components</td><td>One slide per line item · 4-layer outcome template each (feature → outcome → proof → dollar)</td></tr>
+          <tr><td>8</td><td>Total value</td><td>"$17,700 in total value"</td></tr>
+          <tr><td>9</td><td>Retail anchor</td><td>"On our website right now: $3,076"</td></tr>
+          <tr><td>10</td><td>Cohort reveal</td><td>"This is the May Scholarship Cohort. Kickoff call: Sunday May 12, 1pm ET — every family in the room, meeting Dr. Patel, starting together. Cart closes Saturday night. Be in the room or wait until June."</td></tr>
+          <tr><td>11</td><td>Price reveal</td><td>"Today only — your investment is $[live-tier price]" (single price; A or B locked in from phase-1 test)</td></tr>
+          <tr><td>12</td><td>Discount tiers</td><td>Live 50% · Within 7 days 35% · After: full $3,076 or wait for next cohort</td></tr>
+          <tr><td>13</td><td>"If all you got was X"</td><td>Three repetitions (close)</td></tr>
+          <tr><td>14</td><td>Live commitment</td><td>"Type ENROLLED in chat"</td></tr>
+          <tr><td>15</td><td>CTA</td><td>"Click the button. Secure your seat in the May Cohort."</td></tr>
+        </tbody>
+      </table>
+      <p>15 slides for the close arc. Total runtime: 20–25 min from slide 1 to CTA. No screenshare, no website demo, no live name-reading inside this arc — those go after Q&amp;A or get cut entirely (see Rec #5).</p>
+
+      <span class="impact">Lift: +20–30% on conversion · centerpieces the guarantee, sequences the stack properly, re-anchors value without touching price or fabricating bonuses</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#5</span>
+      <h3>Phase 4 — The Close (90:00–105:00): cut the dead air, deliver a climactic close</h3>
+      <p>The close is where the current pitch dies. Three specific moments, all on tape:</p>
+      <ul class="checks">
+        <li><strong>At 1:23:48</strong> Dr. Patel screen-shares unlimitedprep.com to "show what it looks like." For 2 minutes he becomes a checkout-flow tutorial. Chat dies — by 1:30 it's <em>"are we almost done?"</em></li>
+        <li><strong>At 1:43:23</strong> he reads ~25 enrolled family names live for another 2 minutes, mispronouncing several. Wastes the peak buying moment.</li>
+        <li><strong>At 1:55:18</strong> the close ends with: <em>"whether you enroll in Unlimited Prep or not, I wish you guys all the best of luck"</em> — a permission slip to NOT buy.</li>
+      </ul>
+
+      <p style="margin-top:1.5rem"><strong>The new close arc — pre-scripted, runs 4 minutes (not the current 11):</strong></p>
+      <ol style="padding-left:1.2rem;color:var(--text)">
+        <li>Cut the website screenshare entirely — replace with a 10-second slide: QR code, URL, discounted price, cohort kickoff date</li>
+        <li>Cut the live name-reading — replace with the live conversion counter on the slide deck (see Rec #8)</li>
+        <li>Replace the Starbucks frame ("$5.47/day = a latte") — it minimizes the price for a $150K+ HHI parent. New frame: <em>"Average sticker tuition at a private 4-year college is $58,800/year — $235,000 over four years. ONE scholarship from this program pays for Unlimited Prep 30 times over."</em></li>
+        <li>Three "if all you got was X" repetitions — <em>"If all you got was the $2,000 Scholarship Guarantee, would $1,538 be worth it? If all you got was the live cohort with Dr. Patel, would $1,538 be worth it? If all you got was the unlimited courses for a year, would $1,538 be worth it?"</em></li>
+        <li>Live commitment ask — <em>"Type ENROLLED in chat once you're in."</em> Transfers social proof from him reading names to attendees self-identifying.</li>
+        <li>CTA — <em>"Click the button. Secure your seat in the May Scholarship Cohort."</em></li>
+        <li>Add an enemy to the close — pick one and thread it through: "the test-optional myth," "Big Test Prep," or "the college-debt industrial complex." Gives parents a clear "us vs. them" through-line.</li>
+        <li>End with the final ask, not a permission slip. No "whether you enroll or not, best of luck."</li>
+      </ol>
+
+      <span class="impact">Lift: +10–15% on conversion · recovers 4 minutes of dead air + restores climactic emotional peak + removes the "permission to skip" closing line</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#6</span>
+      <h3>Phase 5 — Q&amp;A (105:00–115:00): cap it at 10 minutes, pre-script the top 8 questions</h3>
+      <p>Currently Q&amp;A runs ~21 minutes and decays. Dr. Patel says <em>"Alright, I think we've answered a lot of these…"</em> and ends with the permission slip. The fix:</p>
+      <ul class="checks">
+        <li><strong>Cap Q&amp;A at 10 minutes.</strong> Anything past 10 min adds nothing — closing energy is gone, decision-makers have already left.</li>
+        <li><strong>Live chat moderators handle volume during the pitch</strong> (see Chapter 3, Rec #7). Q&amp;A becomes a curated "best of" live-answered set, not a firehose.</li>
+        <li><strong>Pre-script the top 8 questions verbatim</strong> using actual Jan 11 chat data (table below). Dr. Patel doesn't improvise the highest-stakes 30 seconds of the event — these answers are rehearsed and consistent across every webinar.</li>
+        <li><strong>End with a final ask, not a permission slip.</strong> Replace <em>"whether you enroll or not"</em> with <em>"Last call to claim your seat in the May Cohort. Cart closes Saturday night — kickoff is Sunday."</em></li>
+      </ul>
+
+      <p style="margin-top:1.8rem"><strong>The top 8 questions from Jan 11 chat — pre-script answers for these in priority order:</strong></p>
+      <table class="metric-table" style="font-size:.85rem">
+        <thead><tr><th>#</th><th>Topic (mentions)</th><th>Real chat quotes</th><th>Pre-scripted answer angle</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>1</strong></td>
+            <td><strong>Multi-year / 1 year not enough</strong> (30+)</td>
+            <td><em>"1 year is not enough… need 2 summers for prep"</em> · <em>"any way we can get unlimited courses for 3 years?"</em> · <em>"Junior now so don't really need one year. Any discount for that?"</em> · <em>"What's the price for multiyear access?"</em></td>
+            <td>Lean into upsell — <em>"Great question — most parents start with 1 year and many add 2-, 3-, and 4-year access on the sales page. Each additional year is discounted. The earlier you start, the more years compound — Neil B. won $1.4M starting in 9th grade with 4 years of prep."</em> Treats it as upgrade interest, not resistance.</td>
+          </tr>
+          <tr>
+            <td><strong>2</strong></td>
+            <td><strong>Multi-student / siblings / twins</strong> (15+)</td>
+            <td><em>"What is the cost for twins?"</em> · <em>"How does this work with siblings 11th grade and 9th grade?"</em> · <em>"Can you sign up for multiple years and have multiple children use the same account?"</em></td>
+            <td>Surface the multi-student tier — <em>"Pick the 2- or 3-student option on the sales page right next to the access-length toggle. Each additional student is discounted, and each kid gets their own dashboard, their own homework, their own progress."</em></td>
+          </tr>
+          <tr>
+            <td><strong>3</strong></td>
+            <td><strong>"Is it too late?" / 12th grade</strong> (13+)</td>
+            <td><em>"it late for 12th grade?"</em> · <em>"am I too late?"</em> · <em>"I have a senior, do you have something for her at this time?"</em> · <em>"Is it too late if we are spring of 11th grade?"</em></td>
+            <td>The Express path — <em>"Not too late. We fast-track 12th graders into the cohort — kickoff is in 7 days, your first 1-on-1 tutoring slot locks in within 48 hours, and you have 6–8 weeks before the next test. One scholarship pays for Unlimited Prep many times over even at this stage."</em> Reinforces the domino.</td>
+          </tr>
+          <tr>
+            <td><strong>4</strong></td>
+            <td><strong>Start date flexibility</strong> (8+)</td>
+            <td><em>"Can I pay today and start the 1 year in the spring of 2026?"</em> · <em>"Can I pay now but start in summer?"</em> · <em>"Is there a way to set start time for the one year to a later date?"</em></td>
+            <td>Yes, with the cohort caveat — <em>"You can defer the program start, but the cohort kickoff call is May 12 — that's where you meet your peers and Dr. Patel personally. Lock in today at the cohort price; we'll work the program calendar around your timing."</em></td>
+          </tr>
+          <tr>
+            <td><strong>5</strong></td>
+            <td><strong>Already purchased — retro discount?</strong> (5+)</td>
+            <td><em>"My child already registered for the 8 weeks flagship course. Can we apply credit to this offer?"</em> · <em>"do previous prepexpert students get a discount?"</em> · <em>"I have already signed up for the 6 week flagship, can I just pay the balance to get to 1999?"</em></td>
+            <td>Yes — <em>"Email customer experience tomorrow with proof of your previous purchase. We credit it toward Unlimited Prep at today's cohort price."</em> Removes friction; converts sunk-cost concern into incremental purchase.</td>
+          </tr>
+          <tr>
+            <td><strong>6</strong></td>
+            <td><strong>H4 visa / international eligibility</strong> (5+)</td>
+            <td><em>"Do H4 visa holders are eligible for these scholarships?"</em> · <em>"Are H4 visa students eligible for these scholarships? Plz reply."</em></td>
+            <td>Honest answer — <em>"Most institutional and merit-based scholarships are open to H4 students. Federal aid (Pell, etc.) is not. Our team helps you target the scholarships you ARE eligible for — it's the bigger universe, and many H4 families have won six-figure offers through Prep Expert."</em></td>
+          </tr>
+          <tr>
+            <td><strong>7</strong></td>
+            <td><strong>ACT vs SAT / can I just take one?</strong> (4+)</td>
+            <td><em>"is there any preference for ACT vs SAT?"</em> · <em>"do you have to take the sat and the act?"</em> · <em>"what about only ACT?"</em></td>
+            <td>Direct — <em>"Take whichever scores higher. Unlimited Prep covers both — most students try a diagnostic for each early on, then focus on the one their scores favor. You're not locked in."</em></td>
+          </tr>
+          <tr>
+            <td><strong>8</strong></td>
+            <td><strong>Payment plan + scholarship for the prep itself</strong> (4+)</td>
+            <td><em>"Do you have scholarships for the prep? I'm a single mom with twins — even with the payment plan I'm not sure I can afford it."</em> · <em>"What's the price for multiyear access?"</em></td>
+            <td>Surface the payment plan, then dream outcome — <em>"Payment plan is 4 × $499. The $2,000 Scholarship Guarantee means even worst-case you get more back than you pay. And past parents like [Alexis H. $500K, Neil B. $1.4M] turned this investment into kids attending college debt-free."</em></td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:.9rem;color:var(--muted);margin-top:.8rem"><em>Source: 7,371 lines of Jan 11 webinar chat. Mention counts are approximate (manual scan of question topics). The top 3 categories (multi-year, multi-student, "too late") together represent ~60% of all sales-blocking questions in chat — those three answers are the highest-leverage 90 seconds in the entire webinar.</em></p>
+
+      <span class="impact">Lift: +2–4% on conversion · restores closing energy + removes the structural permission-to-skip line + replaces improvised answers with rehearsed scripts at the highest-stakes moment</span>
+    </div>
+
+    <div style="margin:4rem 0 2rem;padding-top:2.5rem;border-top:2px solid var(--text)">
+      <p class="section-eyebrow" style="margin-bottom:.5rem">Chapter 3 of 3</p>
+      <h3 style="font-family:'Fraunces',serif;font-weight:500;font-size:2rem;text-transform:none;letter-spacing:-0.02em;color:var(--text);margin:.4rem 0 .6rem">Operational Support — catch the buyers the pitch almost converted</h3>
+      <p style="color:var(--muted);font-style:italic;margin:0">Even a perfect pitch loses the buyer who hesitates. These three layers handle the in-the-room signals the pitch can't.</p>
+    </div>
+
+    <div class="rec">
+      <span class="num">#7</span>
+      <h3>Live chat moderation team during the webinar</h3>
+      <p>The Jan 11 chat had 15 sibling questions, 13 "is it too late?" objections, and 30+ "1 year isn't enough" concerns — all left to die because Dr. Patel said <em>"I can't answer questions during the webinar — save them for the end."</em> By Q&amp;A, the high-intent buyers had already left or made up their minds.</p>
+      <ul class="checks">
+        <li>1–2 trained moderators in chat throughout the webinar, answering objections in real-time as they arise</li>
+        <li>Pre-scripted answer bank for the top 20 objections (siblings, "too late," multi-year, AP/PSAT confusion, payment plan, refund mechanics)</li>
+        <li>Tag VIP signals as they appear ("we're enrolling," "twins," budget concerns) for the post-webinar hot-lead recovery sequence (see Post-Webinar section, Rec #4)</li>
+        <li>Moderators surface relevant testimonials in chat at the moment the corresponding stack item is on screen</li>
+      </ul>
+      <span class="impact">Lift: +0.3–0.5pts on conversion · recovers buyers who would otherwise quietly leave</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#8</span>
+      <h3>Live conversion counter on the pitch slides</h3>
+      <p>Visible scarcity that forces decision in real time. A small bar on Dr. Patel's pitch deck shows enrollment as it happens during the webinar.</p>
+      <ul class="checks">
+        <li>Webhook from the checkout system to the slide deck — increments live as buyers click enroll</li>
+        <li>Display: <strong>"47 students enrolled in the May Cohort"</strong>, updating in real time</li>
+        <li>Visible from the moment the offer is revealed through the close</li>
+        <li>Replaces the live name-reading (which currently sits in the same place in the close)</li>
+      </ul>
+      <span class="impact">Lift: +0.1–0.2pts on conversion · creates social-proof momentum during the close</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#9</span>
+      <h3>Compress the webinar to 90 minutes flat</h3>
+      <p>Jan 11 ran 115 minutes (he promised 90). Closing energy collapses past minute 100 — chat asks <em>"are we almost done?"</em> by 1:30. The cuts already specified in this section recover ~25 minutes:</p>
+      <ul class="checks">
+        <li>Compress 12th-grade scholarship section: 13 min → 7 min (Rec #3)</li>
+        <li>Cut website screenshare: 2 min (Rec #5)</li>
+        <li>Cut live name-reading: 2 min (Rec #5)</li>
+        <li>Tighten close arc: 11 min → 4 min (Rec #5)</li>
+        <li>Cap Q&amp;A: 21 min → 10 min (Rec #6)</li>
+      </ul>
+      <p>Stopwatch every dry run. 90 minutes is realistic and dramatically improves closing power because the room is still alert.</p>
+      <span class="impact">Lift: +0.1–0.2pts on conversion · zero cost</span>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── POST-WEBINAR ───────── -->
+<section id="postwebinar" class="alt">
+  <div class="container">
+    <p class="section-eyebrow">Section 6 / 7 — Post-Webinar Sequence</p>
+    <h2>The 7-Day Post-Webinar Sequence</h2>
+    <p class="lede">This is Bottleneck #2. H1 2025 webinars built strong post-webinar tails (some clearing 4–12x ROAS at maturity). Late-2025 webinars stalled at 1.0–1.4x. Direct-to-checkout means the email/SMS sequence must do the work a sales call usually does — and right now there's no escalating-urgency 7-day sequence to recover buyers who didn't decide live. Rebuild this layer and the tail mechanics that powered H1 2025 come back.</p>
+
+    <div class="roi-block">
+      <div class="roi-row"><span class="label">Current post-webinar lift</span><span class="value crisis">−17%</span></div>
+      <div class="roi-row"><span class="label">2025 actual</span><span class="value good">+34%</span></div>
+      <div class="roi-row"><span class="label">Optimized target</span><span class="value">+20–30%</span></div>
+      <div class="roi-row highlight"><span class="label">Annual opportunity</span><span class="value">+$400K</span></div>
+    </div>
+
+    <div class="rec">
+      <span class="num">#1</span>
+      <h3>Build a 7-day escalating-urgency sequence anchored to the kickoff call</h3>
+      <p>The current sequence relies on a single 24-hour promo code expiry. That's one urgency driver, and parents have learned it's fake (the discount comes back). The new sequence is anchored to a <strong>real event</strong>: the live cohort kickoff call on Day 7 or Day 8 after the webinar. Every email counts down to it. The deadline isn't "the timer runs out" — it's "the room starts without you." Parents have to make the call before the kickoff call.</p>
+      <table class="metric-table" style="font-size:.85rem">
+        <thead><tr><th>Day</th><th>Urgency</th><th>Subject Line</th><th>Hook</th></tr></thead>
+        <tbody>
+          <tr><td>0 (immediately)</td><td>Live tier expired · 35% post-webinar tier active · kickoff in 7 days</td><td>"You missed the live price — May Cohort kicks off in 7 days · [N] seats left"</td><td>Replay link · kickoff date · live seat count · cart open until the night before kickoff</td></tr>
+          <tr><td>1</td><td>Multi-year request (#1 chat ask) · 6 days to kickoff</td><td>"You asked about multi-year — here's why parents choose 2-, 3-, and 4-year access"</td><td>Lean into the 30+ chat mentions of "1 year isn't enough": surface the access-length toggle that's already lifting AOV +15%, show the compounding case (start in 9th, 4 years of practice, $1.4M scholarship like Neil B.) · seat count in PS line</td></tr>
+          <tr><td>2</td><td>Multi-student reveal · 5 days to kickoff</td><td>"You asked about siblings. Here's how multi-student pricing works."</td><td>Surface the multi-student tier (Section 7) · address the 15+ in-chat sibling requests directly</td></tr>
+          <tr><td>3</td><td>Kickoff approaches · 4 days · seats filling</td><td>"The May Cohort kicks off Sunday — [N] seats left of 150"</td><td>What the kickoff looks like · who Dr. Patel will meet · live seat count as social proof + scarcity</td></tr>
+          <tr><td>4</td><td>Case study + grade-specific · 3 days to kickoff</td><td>"How Neil B. won $1.4M starting in 9th grade"</td><td>Specific transformation story · pair with prep duration ("started early = bigger scholarship")</td></tr>
+          <tr><td>5</td><td>The cost of missing the cohort · 2 days out</td><td>"What skipping the May Cohort actually costs"</td><td>Loss-aversion: next kickoff is 4–6 weeks away · every week of delay = X fewer prep weeks before the next test date · seat count</td></tr>
+          <tr><td>6</td><td>Kickoff is tomorrow · final 24 hours · last seats</td><td>"Kickoff is tomorrow — last [N] seats in the room"</td><td>The room is starting · final price tier expiry tonight · last-call seat count</td></tr>
+          <tr><td>7 (cart close)</td><td>Kickoff in hours · cart closes tonight</td><td>"Closes tonight — Dr. Patel meets the May Cohort tomorrow morning"</td><td>Final push · cart closes the night before kickoff · price reverts to $3,076 · next cohort is 4–6 weeks away</td></tr>
+        </tbody>
+      </table>
+      <span class="impact">Recovers ~$300K annually as part of the $400K post-webinar lift (back toward 2025 baseline) · every email anchored to a real event, not a fake timer</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#2</span>
+      <h3>Add a 48-hour replay window — same 35% discount, no degraded offer</h3>
+      <p>Currently no replay exists. "Let me think about it" buyers (and the chat showed many) never come back because there's nothing to come back to. The right structure: a 48-hour replay window opens immediately after the webinar, the same 35% post-webinar tier ($1,999) is in effect, the replay disappears at hour 49.</p>
+      <ul class="checks">
+        <li>Live attendees who buy during the webinar still get the highest tier — 50% off ($1,538) — that's the "you're special, you showed up" reward</li>
+        <li>Anyone who didn't buy live (whether they attended or not) gets the replay link via WhatsApp + email at +30 min post-webinar</li>
+        <li>Replay is timestamped, watermarked, and hard-expires at hour 49</li>
+        <li>Discount tier holds at 35% throughout the 7-day cart window — the replay doesn't change pricing, it changes <em>access</em></li>
+        <li>Counterintuitive but proven: making the replay finite (48h, not "available anytime") drives more rewatches than no expiry would</li>
+      </ul>
+      <span class="impact">Recovers 5–10% of the "need to discuss with spouse" objections · second urgency moment 48h after the live event</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#3</span>
+      <h3>Personal WhatsApp outreach to qualified non-buyers — answer their questions, close in chat</h3>
+      <p>Two segments of post-webinar leads are dramatically more likely to convert than the rest of the list. The trained outbound team (CX, internal sales, or partner) handles them on WhatsApp — direct, conversational, no calls to schedule. Surface the objection, answer the question, close the sale. This is the single biggest unspent lever in the funnel.</p>
+
+      <p style="margin-top:1.5rem"><strong>Priority Segment 1 — VIP $97 purchasers (proven buyers, highest priority):</strong></p>
+      <p>Anyone who bought the $97 Scholarship Roadmap upsell on the Thank You page has already pulled out their card. They trust the brand. They've made a purchase decision. They're 3–4× more likely to upgrade to Unlimited Prep than a free registrant.</p>
+      <ul class="checks">
+        <li><strong>Outreach within 24h of the VIP purchase</strong> — personal WhatsApp from a named rep (real photo, real first name)</li>
+        <li><strong>The message:</strong> <em>"Hi [name], this is [rep] from Dr. Patel's team. Saw you grabbed the Scholarship Roadmap — that's a great first step. Most parents who buy the Roadmap end up upgrading to the full Unlimited Prep program. The live-attendee price is still held for you. Any questions I can answer? Happy to walk you through it right here."</em></li>
+        <li><strong>WhatsApp-only objection handling:</strong> the rep stays in chat, answers questions in real-time, sends the upgrade link the moment the parent says yes. No calls to schedule, no Calendly link.</li>
+        <li>Expected conversion: 30–50% of VIP buyers upgrade to the full $1,999 program</li>
+      </ul>
+
+      <p style="margin-top:1.5rem"><strong>Priority Segment 2 — Attendees who stayed past minute 75 but didn't buy:</strong></p>
+      <p>They watched the close. They hesitated. Something specific stopped them — and the longer it sits, the colder the lead gets. Hit them within 4 hours of the webinar, before they've moved on.</p>
+      <ul class="checks">
+        <li><strong>Pull the "stayed past minute 75 + didn't buy" segment</strong> from the webinar platform within 30 minutes of the close</li>
+        <li><strong>Sub-tier the list:</strong> VIP-flagged signals (chat asked about siblings, multiple questions, mentioned a specific test date, asked "is it too late?") get personal WhatsApp first; remaining hot leads get a templated WhatsApp + SMS</li>
+        <li><strong>The opener is not "are you ready to buy"</strong> — it's <em>"Hi [name], this is [rep] from Prep Expert's team. Saw you stayed for the whole webinar — what was the one thing keeping you from enrolling? Happy to clarify right here in WhatsApp."</em></li>
+        <li>Open-ended question surfaces the real objection. Rep answers it in chat. If the parent says yes, the upgrade/enroll link goes straight back. If they say no, free up the rep for the next lead.</li>
+        <li>Expected conversion: 25–40% of hot leads who engage</li>
+      </ul>
+
+      <p style="margin-top:1.5rem"><strong>How the WhatsApp close works:</strong></p>
+      <ul class="checks">
+        <li>Reps trained on the offer architecture, the cohort schedule, and the top 20 objections (siblings, multi-year, "is it too late," payment plan, refund mechanics, etc.)</li>
+        <li>Reps are NOT pitching — the pitch already happened on the webinar. Their job is to surface and resolve the one specific thing keeping this parent from enrolling.</li>
+        <li>Each conversation ends with one of three outcomes: enrolled now, soft-promised to enroll within 48h (rep checks in once), or hard-no (close the thread, free up capacity)</li>
+        <li>Reps work from a shared Notion or Slack channel with answer templates, but always paraphrase to keep messages personal</li>
+      </ul>
+
+      <p style="margin-top:1.5rem"><strong>Required:</strong> Outbound capacity to handle 50–150 WhatsApp conversations per webinar cycle. Three ways to source it:</p>
+      <ol style="padding-left:1.2rem;color:var(--text);margin:.5rem 0 1rem">
+        <li><strong>Existing Customer Experience team</strong> — if the current CX team has bandwidth, train them on the offer + objection bank and route post-webinar outreach through them.</li>
+        <li><strong>Existing sales team</strong> — if Prep Expert has internal sales capacity, this is their highest-leverage assignment; they're not pitching cold leads but closing parents who already watched the pitch.</li>
+        <li><strong>Partner sales team (commission-only)</strong> — WeConquer can introduce a vetted external sales team that runs this on a <strong>10% commission</strong> structure (no fixed cost, paid only on closed enrollments). Useful if Prep Expert doesn't want to add headcount and wants to test the lever before committing.</li>
+      </ol>
+      <p>Whichever route is chosen, the work is the same: a small trained team handling WhatsApp outreach to VIP buyers and stayed-past-minute-75 attendees, plus cart abandonment recovery and live chat moderation during the webinar. Without one of these three options in place, several recommendations in this audit (hot-lead outreach, cart abandonment, VIP upgrade outreach, live chat moderation) literally can't run.</p>
+
+      <span class="impact">Lift: +0.4–0.7pts on overall conversion · 30–50% of VIP buyers upgrade to full program · highest-leverage unspent lever in the funnel</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#4</span>
+      <h3>Cart abandonment recovery — WhatsApp-led</h3>
+      <p>Anyone who hits the checkout page but doesn't complete is closer to buying than 99% of webinar attendees. They've made the decision; something specific stopped them in the last 60 seconds — usually a payment plan question, a spouse-check, or hesitation at the price reveal. Recover them on a tight clock, all on WhatsApp:</p>
+      <table class="metric-table" style="font-size:.85rem">
+        <thead><tr><th>Trigger</th><th>Channel</th><th>Message</th></tr></thead>
+        <tbody>
+          <tr><td>+15 min</td><td>WhatsApp</td><td>"Saw you got close to enrolling — anything you wanted me to clarify before you decide?"</td></tr>
+          <tr><td>+1 hour</td><td>WhatsApp</td><td>"[N] seats left in the May Cohort and kickoff is [date]. Want me to walk you through the payment plan?"</td></tr>
+          <tr><td>+4 hours</td><td>WhatsApp + Email backup</td><td>"Real numbers from past parents: Neil B. won $1.4M, Alexis H. $500K, Michael K. enrolled at UPenn debt-free. Payment plan is 4 × $499 if that helps — anything I can answer?"</td></tr>
+          <tr><td>+24 hours</td><td>WhatsApp</td><td>"Last check-in — kickoff is [N] days away and seats are filling. Anything I can answer?"</td></tr>
+        </tbody>
+      </table>
+      <p>Industry-standard cart abandonment recovery rate at this price point: 15–25%. WhatsApp-only because it's where parents already check messages — no friction of opening a new app or scheduling a call.</p>
+      <span class="impact">Lift: +0.2–0.3pts on conversion · recovers the buyers who were 60 seconds from enrolling</span>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── SIBLING PACK ───────── -->
+<section id="sibling" class="alt">
+  <div class="container">
+    <p class="section-eyebrow">Section 7 / 7 — NEW REVENUE STREAM</p>
+    <h2>Multi-Student Pricing</h2>
+    <p class="lede">15 parents in the Jan 11 webinar chat asked about a sibling, twin, or family discount — every single one denied. The current answer is <em>"buy two packages."</em> That's friction, and it's leaving real revenue on the table from buyers already raising their hand. This isn't a new SKU. It's <strong>one new field on the existing checkout</strong>, scaled the same way the access-length toggle is already scaled.</p>
+
+    <div class="roi-block">
+      <div class="roi-row"><span class="label">Current multi-student pricing</span><span class="value crisis">None — answer is "buy two packages"</span></div>
+      <div class="roi-row"><span class="label">In-room demand (Jan 11 alone)</span><span class="value">15 explicit requests, 0 fulfilled</span></div>
+      <div class="roi-row"><span class="label">Estimated conservative take rate</span><span class="value">10% of cohort enrollees</span></div>
+      <div class="roi-row highlight"><span class="label">Annual opportunity</span><span class="value">+$250K</span></div>
+    </div>
+
+    <div class="rec">
+      <span class="num">#1</span>
+      <h3>Add a "Number of Students" field on the sales page — same pattern as the access-length toggle</h3>
+      <p>The sales page (unlimitedprep.com) already has a length selector (1-Year / 2-Year / 3-Year / 4-Year access) that's lifting AOV +15% — parents understand the pattern, they're already using it. Add one more dimension alongside it on the same page: <strong>Number of Students (1 / 2 / 3)</strong>. Same sales page, same flow, one extra dropdown that flows directly into the checkout.</p>
+
+      <p style="margin-top:1.5rem"><strong>Sample pricing matrix (1-year access, before any discount):</strong></p>
+      <div class="code">NUMBER OF STUDENTS                  RETAIL    35% OFF (cohort)
+──────────────────────────────────────────────────────────────
+1 student                          $3,076      $1,999
+2 students  (+$1,500)              $4,576      $2,974
+3 students  (+$1,000)              $5,576      $3,624
+
+Each additional student costs less at the margin —
+mirrors the same logic as the length toggle (each
+additional year is cheaper than the previous one).</div>
+
+      <p>Why the marginal price drops with each added student:</p>
+      <ul class="checks">
+        <li>Mirrors the proven length-toggle pricing logic — parents already understand the pattern</li>
+        <li>Rewards multi-kid families without giving away the first seat</li>
+        <li>Captures revenue currently walking away — a parent of twins today buys zero packages because the answer is "buy two." A parent of twins tomorrow picks the 2-student tier at $2,974 right on the sales page.</li>
+        <li>Surfaces in the webinar pitch: <em>"Got two kids? Three? Pick the multi-student tier on the sales page — each additional student is discounted."</em></li>
+      </ul>
+
+      <p style="margin-top:1.5rem"><strong>Where this surfaces in the funnel:</strong></p>
+      <ul class="checks">
+        <li><strong>The sales page:</strong> Dropdown sits next to the access-length toggle. Default = 1 student. Identical UX pattern. Primary place where the choice happens.</li>
+        <li><strong>The checkout — savings-nudge:</strong> If a parent lands on checkout with "1 student" selected, surface a single line above the payment block: <em>"Have another child? Add a 2nd student for just $975 more — saves $1,500 vs buying two single-student packages."</em> One-click to upgrade the cart, no page reload. Catches parents who didn't notice the multi-student tier on the sales page.</li>
+        <li><strong>The pitch:</strong> Dr. Patel mentions the multi-student option once during the offer reveal (one slide, ~30 seconds). Pre-empts the 15+ chat questions before they arrive.</li>
+        <li><strong>The post-webinar Day 2 email:</strong> Subject line — <em>"You asked about siblings. Here's how multi-student pricing works."</em> Direct response to the in-room signal.</li>
+      </ul>
+
+      <span class="impact">+$250K annually at conservative 10% take rate · honest math: ~2,500 cohort buyers/yr × 10% multi-student × ~$1,000 marginal upgrade = $250K. Scales with conversion recovery — at 4,000 buyers/yr, this becomes ~$400K. Sales-page selection + checkout savings-nudge captures both the deliberate buyers and the missed-it-the-first-time buyers.</span>
+    </div>
+
+    <div class="rec">
+      <span class="num">#2</span>
+      <h3>Implementation note — no new tech infrastructure required</h3>
+      <p>At [01:47:18] of the Jan 11 webinar, Dr. Patel told a parent: <em>"two students can't use the same unlimited prep package, because each student dashboard is attached to a single student ID... if you have twins, I would highly [recommend] getting two packages."</em> That framing made the multi-student case sound like a product limitation. It isn't.</p>
+      <ul class="checks">
+        <li><strong>Each student already gets their own account by default.</strong> Two students = two separate student accounts, two separate logins, two separate dashboards, two separate homework streams. The system already supports this.</li>
+        <li><strong>One parent payment, two account creations at checkout.</strong> When the parent picks "2 students" on the sales page, the checkout creates one Stripe charge and provisions two separate student accounts at the end. No sub-account hierarchy, no new schema, no engineering project.</li>
+        <li><strong>Implementation:</strong> A small change to the checkout flow — when quantity > 1, ask for each student's name + email, then create that many independent student accounts on completion. Standard e-commerce pattern.</li>
+        <li>The $2,000 scholarship guarantee applies independently to each enrolled student (already the case if they have separate accounts).</li>
+        <li>Update the webinar pitch and CX team scripts: replace "you'll need to buy two packages" with "pick the 2-student tier on the sales page — two separate accounts, one shared discount."</li>
+      </ul>
+      <span class="impact">Estimated engineering effort: ~1 week of checkout work, not 4–6 weeks of architecture. Removes the false blocker on Rec #1.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── REVENUE IMPACT ───────── -->
+<section id="impact">
+  <div class="container">
+    <div class="impact-section">
+      <p class="section-eyebrow" style="text-align:center">Annual Net Revenue Impact Summary</p>
+      <h2 style="text-align:center">Where the +$2.35M Comes From</h2>
+      <p style="text-align:center;color:var(--bg);font-style:italic;margin:.5rem auto 2rem;max-width:780px;font-size:1rem">Annual Net Revenue (Cash Collected − Refunds + Future Rev) — apples-to-apples, full-year vs full-year. Assumes 25 webinars/year (current 2026 pace).</p>
+
+      <div class="impact-grid">
+        <div class="impact-cell">
+          <p class="lab">2025 Annual Net Revenue (actual, 18 webinars)</p>
+          <p class="val">$5.11M</p>
+        </div>
+        <div class="impact-cell">
+          <p class="lab">2026 Annual Net Revenue (projected at current per-webinar pace × 25 webinars)</p>
+          <p class="val">$5.0M</p>
+        </div>
+        <div class="impact-cell">
+          <p class="lab">Year 1 Target with Recommendations (25 webinars)</p>
+          <p class="val">$7.5M</p>
+        </div>
+        <div class="impact-cell highlight">
+          <p class="lab">Annual Uplift from Recommendations</p>
+          <p class="val">+$2.35M</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="color:var(--gold);margin-top:3rem">Where the +$2.35M comes from — line by line</h3>
+    <table class="metric-table">
+      <thead>
+        <tr><th>Lever</th><th>Mechanism</th><th class="right">Annual $</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Webinar Pitch — close + offer + stack</td><td>Cohort frame + tiered discount + outcome-translated stack + grade-specific narratives + locked close arc</td><td class="right">+$1.0M</td></tr>
+        <tr><td>Post-Webinar Process + WhatsApp outreach</td><td>7-day cohort-deadline sequence + 48h replay + hot-lead outreach to VIP buyers and stayed-past-minute-75 attendees</td><td class="right">+$400K</td></tr>
+        <tr><td>Thank You Page</td><td>WhatsApp parents group + $97 VIP upsell at 10% take + bonus tease + calendar reminders</td><td class="right">+$300K</td></tr>
+        <tr><td>Pre-Webinar Drip + Email Sequence</td><td>Daily voice notes from Dr. Patel + success stories + reminder cadence — show-up rate compound</td><td class="right">+$300K</td></tr>
+        <tr><td>Multi-Student Pricing</td><td>10% take rate of cohort enrollees × ~$1,000 marginal upgrade. Scales with conversion recovery.</td><td class="right">+$250K</td></tr>
+        <tr><td>Landing Page</td><td>Social-proof line + 3 testimonials with $$ amounts</td><td class="right">+$100K</td></tr>
+        <tr style="background:rgba(200,50,26,.08);border-top:2px solid var(--text)"><td><strong>Total opportunity (Year 1)</strong></td><td></td><td class="right" style="color:var(--gold);font-weight:700;font-family:'Fraunces',serif;font-style:italic;font-size:1.1rem">+$2.35M</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.85rem;color:var(--muted);margin-top:1rem"><strong>How to read this:</strong> All figures are annual <strong>Net Revenue</strong>. Baseline math: 2026 is on pace for ~25 webinars/year; per-webinar mature Net Revenue is trending toward ~$200K (down from 2025's $284K avg as Same-Day ROAS dropped from 4.49x to 1.36x Q1-over-Q1). 25 × $200K ≈ $5.0M baseline. With recommendations, target per-webinar mature Net Revenue is ~$300K (partial recovery toward 2025 H1 levels). 25 × $300K ≈ $7.5M. Uplift: $2.35M. Aggressive case — if Same-Day ROAS fully recovers to 2025 H1's 4.49x — adds another $1.5–2M on top.</p>
+  </div>
+</section>
+
+<!-- ───────── ROADMAP ───────── -->
+<section id="roadmap" class="alt">
+  <div class="container">
+    <p class="section-eyebrow">Implementation</p>
+    <h2>Phased Roadmap (~6 months)</h2>
+    <p class="lede">Test one variable at a time. The single biggest mistake at this stage is changing everything at once and not knowing what worked. Phases are sized in <strong>webinars-per-test</strong>, not calendar days, so each test reaches statistical power before we move on. At ~25 webinars/year (current pace = roughly one every 2 weeks), the full sequence runs ~6 months end to end. Each phase has a clear "what we're testing" and "what we're holding constant" — so when conversion moves, we know why.</p>
+
+    <div class="phase" style="border-left-color:var(--accent)">
+      <span class="ph-tag" style="color:var(--accent)">Phase 0 · Confirm load-bearing dependencies</span>
+      <h3>Verify the team and tooling that the rest of the plan rests on</h3>
+      <p style="margin:.4rem 0 .8rem;color:var(--muted);font-style:italic">Two questions to answer with Prep Expert before kicking off Phase 1. Both gate the highest-impact recommendations.</p>
+      <ul>
+        <li><strong>Confirm the outbound-sales source</strong> for post-webinar WhatsApp outreach (VIP buyers + stayed-past-minute-75 attendees), cart-abandonment recovery, and live chat moderation. Three options: (a) the existing CX team if they have bandwidth, (b) Prep Expert's internal sales team if one exists, or (c) WeConquer's vetted partner sales team on a <strong>10% commission</strong> structure (no fixed cost). Pick one before Phase 3 — every follow-up recommendation depends on it.</li>
+        <li><strong>Confirm Dr. Patel can host the cohort kickoff calls personally</strong> for the first 4 cohorts (May, June, July, August). A senior instructor is the fallback, but Dr. Patel-led kickoffs are materially better for the cohort-feel and are the version this proposal is priced against.</li>
+      </ul>
+    </div>
+
+    <div class="phase">
+      <span class="ph-tag">Phase 1 (~16 weeks · 8 webinars) · Test the offer mechanics</span>
+      <h3>Cohort frame + tiered discount — isolated</h3>
+      <p style="margin:.4rem 0 .8rem;color:var(--muted);font-style:italic">Hold the rest of the pitch constant. Only change the offer architecture. Measure live-day conversion + 7-day cart Net Revenue against the Q1 2026 baseline.</p>
+      <ul>
+        <li>Set up the cohort frame — name + <strong>real kickoff call on Day 7 or Day 8 after each webinar</strong> for the next 4 cohorts (May Cohort kickoff, June Cohort kickoff, etc.). Block Dr. Patel's calendar; cart closes the night before each kickoff.</li>
+        <li>Run an A/B test across <strong>8 webinars (4 each), not 4</strong> — at ~93 buyers per webinar, 4 webinars (~370 buyers) gives weak statistical power. 8 webinars (~740 buyers) is enough to detect a 15%+ conversion difference between Option A (50/35) and Option B (35/25) with confidence. Webinars are alternated A/B/A/B to control for seasonality. Measure live-day close rate + total cohort-window Net Revenue.</li>
+        <li><strong>Ship multi-student pricing on the sales page immediately</strong> — uses the proven access-length-toggle UX pattern, no isolated test needed. Just deploy.</li>
+        <li>Surface the multi-student option in the Day 2 post-webinar email so existing pre-launch traffic gets the option too.</li>
+        <li><strong>Decision at end of Phase 1 (~16 weeks given 8 webinars):</strong> Lock in either Option A or Option B based on actual Net Revenue per attendee. Move on.</li>
+      </ul>
+    </div>
+
+    <div class="phase">
+      <span class="ph-tag">Phase 2 (~8 weeks · 4 webinars) · Test the full close</span>
+      <h3>Stack rebuild + close arc — built on top of the now-locked offer</h3>
+      <p style="margin:.4rem 0 .8rem;color:var(--muted);font-style:italic">Offer mechanics are stable from Phase 1. Now test the pitch itself. Measure conversion lift over the offer-only baseline.</p>
+      <ul>
+        <li>Rewrite the stack with outcome translation on every line — feature → outcome → proof → dollar</li>
+        <li>Apply the locked 15-slide close arc — guarantee headline → stack → total → retail anchor → cohort reveal → price → discount tiers → "if all you got was X" → live commitment → CTA</li>
+        <li>Pre-script the price reveal — no more improvisation</li>
+        <li>Plant the domino in the opening and reinforce it through the three belief-shifters in the teach phase</li>
+        <li>Build the grade-specific narrative threads (12th = Express, 11th = Sweet Spot, 9th/10th = Early Start)</li>
+        <li>Cut the website screenshare and the live name-reading from the close</li>
+        <li>Compress the webinar to 90 minutes flat</li>
+        <li>Replace the Starbucks frame with college-debt loss aversion</li>
+        <li><strong>Decision at end of Phase 2:</strong> Compare conversion rate to Phase 1 (offer-only) baseline. Confirm the close fixes are additive before layering on follow-up mechanics.</li>
+      </ul>
+    </div>
+
+    <div class="phase">
+      <span class="ph-tag">Phase 3 (~8 weeks · 4 webinars) · Test the follow-up mechanics</span>
+      <h3>Post-webinar sequence + WhatsApp + replay + outbound team</h3>
+      <p style="margin:.4rem 0 .8rem;color:var(--muted);font-style:italic">Pitch + offer are stable. Now test what catches the buyers the pitch almost converted.</p>
+      <ul>
+        <li>Lock in the outbound-sales source decided in Phase 0 (existing CX, internal sales, or WeConquer's partner team on 10% commission) — load-bearing dependency for the rest of phase 3</li>
+        <li>Build the 7-day post-webinar sequence with cohort-deadline urgency</li>
+        <li>Launch the 48h replay window — same 35% post-webinar tier holds, replay just changes access</li>
+        <li>Launch hot-lead WhatsApp outreach to VIP $97 buyers + attendees who stayed past minute 75</li>
+        <li>Launch cart abandonment WhatsApp recovery (4 touches: +15min, +1h, +4h, +24h)</li>
+        <li>Add live chat moderation during the webinar (1–2 trained mods answering top-20 objections in real-time)</li>
+        <li>Add the live conversion counter on pitch slides ("47 students enrolled in the May Cohort")</li>
+        <li>Launch the $97 VIP Scholarship Roadmap upsell on the Thank You page</li>
+        <li><strong>Decision at end of Phase 3:</strong> Measure compound conversion + Net Revenue lift across all three phases. Lock in the new baseline.</li>
+      </ul>
+    </div>
+
+    <div class="phase" style="border-left-color:var(--good)">
+      <span class="ph-tag" style="color:var(--good)">Phase 4 (ongoing) · Polish and scale</span>
+      <h3>Landing page + drip refinement + measurement + scale</h3>
+      <p style="margin:.4rem 0 .8rem;color:var(--muted);font-style:italic">Everything that doesn't move the dial enough to test in isolation. Ship in batches once Phases 1–3 lock in the new baseline.</p>
+      <ul>
+        <li>Landing page: add the "you're not alone" social-proof line + 3 testimonials with $$ amounts (lowest priority — page already works)</li>
+        <li>Pre-Webinar Drip: refine voice-note + success-story + common-mistake-video cadence based on Phase 3 WhatsApp engagement data</li>
+        <li>WhatsApp parents group: spin up the per-cohort group mechanic if Phase 3 hot-lead outreach validates the channel</li>
+        <li>Multi-student account provisioning: ensure the checkout creates two separate student accounts (one parent payment) — one-week engineering task, not 4–6 weeks of architecture</li>
+        <li>Compare full-funnel Same-Day ROAS vs Q1 2026 baseline (1.36x). If at or above 2.0x, hold spend. If above 2.5x, scale spend to test the new ceiling.</li>
+        <li>Lock in cohort cadence at one per webinar (each cohort gets a real name, real kickoff date, real cart-close deadline)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FOOTER ───────── -->
+<footer>
+  <div class="container">
+    <h2>READY TO IMPLEMENT?</h2>
+    <p>Restore <span class="gold">H1 2025 unit economics</span> by fixing the webinar-to-buy conversion rate and the post-webinar process, then layer <span class="gold">multi-student pricing + WhatsApp outreach</span> on top to push past the baseline.</p>
+    <p>That's <span class="gold">+$2.35M annual Net Revenue</span> — built honestly: restored unit economics on the spend Prep Expert is already making, plus modest new revenue from mechanics that didn't exist before.</p>
+    <p class="signoff">Prepared by WeConquer Media · April 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
