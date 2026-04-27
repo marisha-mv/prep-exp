@@ -1270,19 +1270,6 @@ PATTERN (the part to lock in):
       <span class="impact">+$250K annually at conservative 10% take rate · honest math: ~2,500 cohort buyers/yr × 10% multi-student × ~$1,000 marginal upgrade = $250K. Scales with conversion recovery — at 4,000 buyers/yr, this becomes ~$400K. Sales-page selection + checkout savings-nudge captures both the deliberate buyers and the missed-it-the-first-time buyers.</span>
     </div>
 
-    <div class="rec">
-      <span class="num">#2</span>
-      <h3>Implementation note — no new tech infrastructure required</h3>
-      <p>At [01:47:18] of the Jan 11 webinar, Dr. Patel told a parent: <em>"two students can't use the same unlimited prep package, because each student dashboard is attached to a single student ID... if you have twins, I would highly [recommend] getting two packages."</em> That framing made the multi-student case sound like a product limitation. It isn't.</p>
-      <ul class="checks">
-        <li><strong>Each student already gets their own account by default.</strong> Two students = two separate student accounts, two separate logins, two separate dashboards, two separate homework streams. The system already supports this.</li>
-        <li><strong>One parent payment, two account creations at checkout.</strong> When the parent picks "2 students" on the sales page, the checkout creates one Stripe charge and provisions two separate student accounts at the end. No sub-account hierarchy, no new schema, no engineering project.</li>
-        <li><strong>Implementation:</strong> A small change to the checkout flow — when quantity > 1, ask for each student's name + email, then create that many independent student accounts on completion. Standard e-commerce pattern.</li>
-        <li>The $2,000 scholarship guarantee applies independently to each enrolled student (already the case if they have separate accounts).</li>
-        <li>Update the webinar pitch and CX team scripts: replace "you'll need to buy two packages" with "pick the 2-student tier on the sales page — two separate accounts, one shared discount."</li>
-      </ul>
-      <span class="impact">Estimated engineering effort: ~1 week of checkout work, not 4–6 weeks of architecture. Removes the false blocker on Rec #1.</span>
-    </div>
   </div>
 </section>
 
