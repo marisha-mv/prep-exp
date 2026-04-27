@@ -1258,23 +1258,26 @@ Anchored against:  Live price (Option B) $1,999 =  8.85× value</div>
       <h3>Add a "Number of Students" field on the sales page — same pattern as the access-length toggle</h3>
       <p>The sales page (unlimitedprep.com) already has a length selector (1-Year / 2-Year / 3-Year / 4-Year access) that's lifting AOV +15% — parents understand the pattern, they're already using it. Add one more dimension alongside it on the same page: <strong>Number of Students (1 / 2 / 3)</strong>. Same sales page, same flow, one extra dropdown that flows directly into the checkout.</p>
 
-      <p style="margin-top:1.5rem"><strong>Sample pricing matrix (1-year access, before any discount):</strong></p>
+      <p style="margin-top:1.5rem"><strong>Illustrative pricing framework (1-year access — Prep Expert sets actual tier prices):</strong></p>
       <div class="code">NUMBER OF STUDENTS                  RETAIL    35% OFF (cohort)
 ──────────────────────────────────────────────────────────────
 1 student                          $3,076      $1,999
-2 students  (+$1,500)              $4,576      $2,974
-3 students  (+$1,000)              $5,576      $3,624
+2 students  (+$1,500 ex.)          $4,576      $2,974
+3 students  (+$1,000 ex.)          $5,576      $3,624
 
-Each additional student costs less at the margin —
-mirrors the same logic as the length toggle (each
-additional year is cheaper than the previous one).</div>
+PATTERN (the part to lock in):
+  Each additional student costs LESS at the margin
+  than the previous one — mirrors the access-length
+  toggle. Actual marginal prices are Prep Expert's
+  call based on margin targets and demand testing.</div>
 
-      <p>Why the marginal price drops with each added student:</p>
+      <p>Why the marginal price drops with each added student (the framework principle, regardless of actual numbers):</p>
       <ul class="checks">
         <li>Mirrors the proven length-toggle pricing logic — parents already understand the pattern</li>
         <li>Rewards multi-kid families without giving away the first seat</li>
-        <li>Captures revenue currently walking away — a parent of twins today buys zero packages because the answer is "buy two." A parent of twins tomorrow picks the 2-student tier at $2,974 right on the sales page.</li>
+        <li>Captures revenue currently walking away — a parent of twins today buys zero packages because the answer is "buy two." A parent of twins tomorrow picks the 2-student tier on the sales page.</li>
         <li>Surfaces in the webinar pitch: <em>"Got two kids? Three? Pick the multi-student tier on the sales page — each additional student is discounted."</em></li>
+        <li><strong>Tier-price calibration is Prep Expert's call:</strong> the recommended starting point is to land each marginal student price 30–50% below the single-student price. Test for a quarter, watch take rate, adjust.</li>
       </ul>
 
       <p style="margin-top:1.5rem"><strong>Where this surfaces in the funnel:</strong></p>
@@ -1355,8 +1358,8 @@ additional year is cheaper than the previous one).</div>
 <section id="roadmap" class="alt">
   <div class="container">
     <p class="section-eyebrow">Implementation</p>
-    <h2>Phased Roadmap (~6 months)</h2>
-    <p class="lede">Test one variable at a time. The single biggest mistake at this stage is changing everything at once and not knowing what worked. Phases are sized in <strong>webinars-per-test</strong>, not calendar days, so each test reaches statistical power before we move on. At ~25 webinars/year (current pace = roughly one every 2 weeks), the full sequence runs ~6 months end to end. Each phase has a clear "what we're testing" and "what we're holding constant" — so when conversion moves, we know why.</p>
+    <h2>Phased Roadmap (~3 months)</h2>
+    <p class="lede">Layer changes progressively, one set of mechanics at a time. The single biggest mistake at this stage is changing everything at once and not knowing what worked. Phases are sized in <strong>webinars-per-cycle</strong>, not calendar days — each phase ships its changes on the next webinar, watches the result, confirms (or iterates) on the second webinar, then moves on. At ~25 webinars/year (current pace = roughly one every 2 weeks), 3 phases × 2 webinars = ~12 weeks end to end. Each phase has a clear "what we're shipping" and "what we're holding constant" — so when conversion moves, we know which layer drove it.</p>
 
     <div class="phase" style="border-left-color:var(--accent)">
       <span class="ph-tag" style="color:var(--accent)">Phase 0 · Confirm load-bearing dependencies</span>
@@ -1369,15 +1372,15 @@ additional year is cheaper than the previous one).</div>
     </div>
 
     <div class="phase">
-      <span class="ph-tag">Phase 1 (~16 weeks · 8 webinars) · Test the offer mechanics</span>
-      <h3>Cohort frame + tiered discount — isolated</h3>
-      <p style="margin:.4rem 0 .8rem;color:var(--muted);font-style:italic">Hold the rest of the pitch constant. Only change the offer architecture. Measure live-day conversion + 7-day cart Net Revenue against the Q1 2026 baseline.</p>
+      <span class="ph-tag">Phase 1 (~4 weeks · 2 webinars) · Ship the new offer mechanics</span>
+      <h3>Cohort frame + tiered discount — progressive layering, not A/B test</h3>
+      <p style="margin:.4rem 0 .8rem;color:var(--muted);font-style:italic">Dr. Patel picks Option A or Option B upfront based on his margin economics (the choice is a unit-economics call, not a testing call). Hold the rest of the pitch constant, ship the chosen offer + cohort frame on the very next webinar, watch what happens against the Q1 2026 baseline.</p>
       <ul>
         <li>Set up the cohort frame — name + <strong>real kickoff call on Day 7 after each webinar</strong> for the next 4 cohorts (May 10, May 24, June 7, June 21 — bi-weekly, named by kickoff date). Block Dr. Patel's calendar; cart closes the night before each kickoff.</li>
-        <li>Run an A/B test across <strong>8 webinars (4 each), not 4</strong> — at ~93 buyers per webinar, 4 webinars (~370 buyers) gives weak statistical power. 8 webinars (~740 buyers) is enough to detect a 15%+ conversion difference between Option A (50/35) and Option B (35/25) with confidence. Webinars are alternated A/B/A/B to control for seasonality. Measure live-day close rate + total cohort-window Net Revenue.</li>
+        <li><strong>Dr. Patel picks Option A (50/35) or Option B (35/25) before the next webinar</strong> based on his unit economics — Option B is the recommended starting point (preserves margin, smaller live-day spike but cleaner). No A/B test required; the choice is a margin call, not a discovery call.</li>
         <li><strong>Ship multi-student pricing on the sales page immediately</strong> — uses the proven access-length-toggle UX pattern, no isolated test needed. Just deploy.</li>
         <li>Surface the multi-student option in the Day 2 post-webinar email so existing pre-launch traffic gets the option too.</li>
-        <li><strong>Decision at end of Phase 1 (~16 weeks given 8 webinars):</strong> Lock in either Option A or Option B based on actual Net Revenue per attendee. Move on.</li>
+        <li><strong>Decision after webinar 1:</strong> Did per-webinar Net Revenue improve over the Q1 2026 baseline ($183K mature average)? If yes → confirm on webinar 2 and move to Phase 2. If no → tighten the cohort framing or switch tier (A↔B) for webinar 2 and re-test. Same ship-and-iterate philosophy as Phases 2 and 3.</li>
       </ul>
     </div>
 
